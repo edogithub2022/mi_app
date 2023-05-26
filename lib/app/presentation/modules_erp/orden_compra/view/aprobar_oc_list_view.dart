@@ -107,7 +107,7 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
               ordenCompraTotal: ordenCompraTotal,
               child: Container(
                 margin:
-                    const EdgeInsets.symmetric(vertical: 40, horizontal: 10),
+                    const EdgeInsets.symmetric(vertical: 45, horizontal: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

@@ -28,21 +28,21 @@ class CardListView extends StatelessWidget {
             //   top: 0,
             // ),
             width: double.infinity,
-            height: 210,
+            height: 230,
             decoration: _cardBorders(),
             child: Stack(
               children: [
                 child,
                 Positioned(
-                  top: 6,
-                  right: 70,
+                  top: 0,
+                  right: 60,
                   child: _Oc(
                     oc: ordenCompraTotal.correlativo.toString(),
                     razonSocial: ordenCompraTotal.razonSocial.toString(),
                   ),
                 ),
                 Positioned(
-                  top: 180,
+                  top: 200,
                   right: 0,
                   child: _Total(
                     total: ordenCompraTotal.totalBruto,
@@ -50,8 +50,8 @@ class CardListView extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 10,
-                  right: 10,
+                  top: 5,
+                  right: 2,
                   child: Text(
                     ordenCompraTotal.estadoRecepcion,
                     style: const TextStyle(
@@ -101,7 +101,7 @@ class _Total extends StatelessWidget {
     NumberFormat number = numberFormat(codmoneda: codmoneda);
 
     return Container(
-      width: 130,
+      width: 140,
       height: 30,
       alignment: Alignment.centerRight,
       decoration: const BoxDecoration(
@@ -136,7 +136,7 @@ class _Oc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300,
+      width: 280,
       height: 30,
       alignment: Alignment.centerLeft,
       decoration: const BoxDecoration(
