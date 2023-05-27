@@ -161,7 +161,7 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                                   style: TextStyle(fontWeight: FontWeight.w300),
                                 ),
                                 Text(
-                                  ordenCompraTotal.soliCodsolicitador,
+                                  ordenCompraTotal.soliCodcomprador,
                                   style: const TextStyle(
                                       fontWeight: FontWeight.w400),
                                 ),

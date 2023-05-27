@@ -321,7 +321,7 @@ class _ModificaOC extends StatelessWidget {
         // const SizedBox(height: 10),
         _LabelButton(
           label: 'Solicitado por',
-          value: ordenCompraTotales.soliCodcomprador,
+          value: ordenCompraTotales.soliCodsolicitador,
         ),
         _LabelButton(
           label: 'Comprador',
