@@ -28,7 +28,7 @@ class CardListView extends StatelessWidget {
             //   top: 0,
             // ),
             width: double.infinity,
-            height: 230,
+            height: 250,
             decoration: _cardBorders(),
             child: Stack(
               children: [
@@ -42,7 +42,7 @@ class CardListView extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 200,
+                  top: 220,
                   right: 0,
                   child: _Total(
                     total: ordenCompraTotal.totalBruto,

@@ -106,8 +106,7 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
             child: CardListView(
               ordenCompraTotal: ordenCompraTotal,
               child: Container(
-                margin:
-                    const EdgeInsets.symmetric(vertical: 45, horizontal: 20),
+                margin: const EdgeInsets.symmetric(vertical: 45, horizontal: 5),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

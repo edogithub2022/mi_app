@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cl.miapp.mi_app">
+    package="cl.dev.edocontreras.miapp">
+   <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="Agrosoft"
         android:name="${applicationName}"
