@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 import 'package:mi_app/app/domain/models/erp/orden_compra/orden_compra_cab.dart';
 import 'package:mi_app/app/domain/models/models.dart';
@@ -122,6 +122,18 @@ class _ListView extends StatelessWidget {
                 ),
               ),
 
+              Positioned(
+                top: 5,
+                right: 105,
+                child: Text(
+                  '${ordenCompraTotales.razonSocial}',
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black45,
+                  ),
+                ),
+              ),
               Positioned(
                 top: 0,
                 right: 10,
@@ -320,6 +332,13 @@ class _ModificaOC extends StatelessWidget {
         //Datos OC
         // const SizedBox(height: 10),
         _LabelButton(
+          label: 'Fecha OC',
+          value: ordenCompraTotales.fechaCreacion != null
+              ? DateFormat('dd/MM/yyyy')
+                  .format(ordenCompraTotales.fechaCreacion!)
+              : '',
+        ),
+        _LabelButton(
           label: 'Solicitado por',
           value: ordenCompraTotales.soliCodsolicitador,
         ),
@@ -372,7 +391,13 @@ class _ModificaOC extends StatelessWidget {
                             ),
                             const SizedBox(width: 5),
                             Text(
-                              ocDet.first.ordenCompraDets[i].nomArticulo,
+                              '${ocDet.first.ordenCompraDets[i].nomArticulo}, ',
+                              style: const TextStyle(fontSize: 14),
+                            ),
+                            const SizedBox(width: 5),
+                            Text(
+                              NumberFormat('#,##0.00').format(
+                                  ocDet.first.ordenCompraDets[i].cantidad),
                               style: const TextStyle(fontSize: 14),
                             ),
                           ],
