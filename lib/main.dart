@@ -12,8 +12,9 @@ import 'package:mi_app/app/presentation/theme/providers/theme_provider.dart';
 
 // const String enviroment = "desarrollo";
 const String enviroment = "produccion";
-const String http =
-    enviroment == 'desarrollo' ? 'http://192.168.1.94' : 'http://52.205.100.56';
+const String http = enviroment == 'desarrollo'
+    ? 'http://192.168.1.94'
+    : 'http://34.229.130.150';
 const String portLogin = enviroment == 'desarrollo' ? '8080' : '8082';
 const String portERP = enviroment == 'desarrollo' ? '8081' : '8083';
 
