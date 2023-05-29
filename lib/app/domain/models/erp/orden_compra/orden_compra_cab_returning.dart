@@ -16,6 +16,8 @@ class OrdenCompraCabReturning {
     required this.soliCodcomprador,
     required this.fechaEntrega,
     required this.codmoneda,
+    required this.proveEmail,
+    required this.fechaCreacion,
   });
 
   int codHolding;
@@ -34,6 +36,8 @@ class OrdenCompraCabReturning {
   String soliCodcomprador;
   DateTime fechaEntrega;
   int codmoneda;
+  String proveEmail;
+  DateTime fechaCreacion;
 
   factory OrdenCompraCabReturning.fromJson(Map<String, dynamic> json) =>
       OrdenCompraCabReturning(
@@ -53,6 +57,8 @@ class OrdenCompraCabReturning {
         soliCodcomprador: json["SOLI_CODCOMPRADOR"],
         fechaEntrega: DateTime.parse(json["FECHA_ENTREGA"]),
         codmoneda: json["CODMONEDA"],
+        proveEmail: json["PROVE_EMAIL"],
+        fechaCreacion: DateTime.parse(json["FECHA_CREACION"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -72,5 +78,7 @@ class OrdenCompraCabReturning {
         "SOLI_CODCOMPRADOR": soliCodcomprador,
         "FECHA_ENTREGA": fechaEntrega.toIso8601String(),
         "CODMONEDA": codmoneda,
+        "PROVE_EMAIL": proveEmail,
+        "FECHA_CREACION": fechaCreacion.toIso8601String(),
       };
 }

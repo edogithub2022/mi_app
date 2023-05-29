@@ -165,6 +165,18 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                                   style: const TextStyle(
                                       fontWeight: FontWeight.w400),
                                 ),
+                                const Text(
+                                  'Fecha OC',
+                                  style: TextStyle(fontWeight: FontWeight.w300),
+                                ),
+                                Text(
+                                  ordenCompraTotal.fechaCreacion != null
+                                      ? DateFormat('dd/MM/yyyy').format(
+                                          ordenCompraTotal.fechaCreacion!)
+                                      : '',
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w400),
+                                ),
                               ],
                             ),
                           ],

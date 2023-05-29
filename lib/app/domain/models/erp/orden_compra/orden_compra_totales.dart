@@ -12,12 +12,14 @@ class OrdenCompraTotales {
     required this.soliCodsolicitador,
     required this.soliCodcomprador,
     required this.fechaEntrega,
+    this.codmoneda,
+    this.proveEmail,
+    this.fechaCreacion,
     required this.totalNeto,
     required this.totalIva,
     required this.totalExento,
     required this.totalEspecifico,
     required this.totalBruto,
-    this.codmoneda,
     this.razonSocial,
   });
 
@@ -33,12 +35,14 @@ class OrdenCompraTotales {
   String soliCodsolicitador;
   String soliCodcomprador;
   DateTime fechaEntrega;
+  int? codmoneda;
+  String? proveEmail;
+  DateTime? fechaCreacion;
   double totalNeto;
   double totalIva;
   double totalExento;
   double totalEspecifico;
   double totalBruto;
-  int? codmoneda;
   String? razonSocial;
 
   factory OrdenCompraTotales.fromJson(Map<String, dynamic> json) =>
@@ -55,12 +59,14 @@ class OrdenCompraTotales {
         soliCodsolicitador: json["SOLI_CODSOLICITADOR"],
         soliCodcomprador: json["SOLI_CODCOMPRADOR"],
         fechaEntrega: DateTime.parse(json["FECHA_ENTREGA"]),
+        codmoneda: json["CODMONEDA"],
+        proveEmail: json["PROVE_EMAIL"],
+        fechaCreacion: DateTime.parse(json["FECHA_CREACION"]),
         totalNeto: json["totalNeto"]?.toDouble(),
         totalIva: json["totalIva"]?.toDouble(),
         totalExento: json["totalExento"]?.toDouble(),
         totalEspecifico: json["totalEspecifico"]?.toDouble(),
         totalBruto: json["total_bruto"]?.toDouble(),
-        codmoneda: json["CODMONEDA"],
         razonSocial: json["razonSocial"],
       );
 
@@ -77,12 +83,14 @@ class OrdenCompraTotales {
         "SOLI_CODSOLICITADOR": soliCodsolicitador,
         "SOLI_CODCOMPRADOR": soliCodcomprador,
         "FECHA_ENTREGA": fechaEntrega.toIso8601String(),
+        "codmoneda": codmoneda ?? 1,
+        "proveEmail": proveEmail ?? "",
+        "fechaCreacion": fechaCreacion?.toIso8601String() ?? "",
         "totalNeto": totalNeto,
         "totalIva": totalIva,
         "totalExento": totalExento,
         "totalEspecifico": totalEspecifico,
         "total_bruto": totalBruto,
-        "codmoneda": codmoneda ?? 1,
         "razonSocial": razonSocial ?? '',
       };
 
@@ -99,12 +107,14 @@ class OrdenCompraTotales {
         soliCodsolicitador: soliCodsolicitador,
         soliCodcomprador: soliCodcomprador,
         fechaEntrega: fechaEntrega,
+        codmoneda: codmoneda,
+        proveEmail: proveEmail,
+        fechaCreacion: fechaCreacion,
         totalNeto: totalNeto,
         totalIva: totalIva,
         totalExento: totalExento,
         totalEspecifico: totalEspecifico,
         totalBruto: totalBruto,
-        codmoneda: codmoneda,
         razonSocial: razonSocial,
       );
 }

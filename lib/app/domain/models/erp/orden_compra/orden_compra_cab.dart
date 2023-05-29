@@ -16,6 +16,8 @@ class OrdenCompraCab {
     required this.fechaEntrega,
     required this.totalEspecifico,
     required this.codmoneda,
+    required this.proveEmail,
+    required this.fechaCreacion,
     required this.ordenCompraDets,
   });
 
@@ -33,6 +35,8 @@ class OrdenCompraCab {
   DateTime fechaEntrega;
   int totalEspecifico;
   int codmoneda;
+  String proveEmail;
+  DateTime fechaCreacion;
   List<OrdenCompraDet> ordenCompraDets;
 
   factory OrdenCompraCab.fromJson(Map<String, dynamic> json) => OrdenCompraCab(
@@ -50,6 +54,8 @@ class OrdenCompraCab {
         fechaEntrega: DateTime.parse(json["FECHA_ENTREGA"]),
         totalEspecifico: json["totalEspecifico"],
         codmoneda: json["CODMONEDA"],
+        proveEmail: json["PROVE_EMAIL"],
+        fechaCreacion: DateTime.parse(json["FECHA_CREACION"]),
         ordenCompraDets: List<OrdenCompraDet>.from(
             json["OrdenCompraDets"].map((x) => OrdenCompraDet.fromJson(x))),
       );
@@ -69,6 +75,8 @@ class OrdenCompraCab {
         "FECHA_ENTREGA": fechaEntrega.toIso8601String(),
         "totalEspecifico": totalEspecifico,
         "CODMONEDA": codmoneda,
+        "PROVE_EMAIL": proveEmail,
+        "FECHA_CREACION": fechaCreacion.toIso8601String(),
         "OrdenCompraDets":
             List<dynamic>.from(ordenCompraDets.map((x) => x.toJson())),
       };
