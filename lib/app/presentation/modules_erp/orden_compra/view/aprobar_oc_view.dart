@@ -123,18 +123,6 @@ class _ListView extends StatelessWidget {
               ),
 
               Positioned(
-                top: 5,
-                right: 105,
-                child: Text(
-                  '${ordenCompraTotales.razonSocial}',
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black45,
-                  ),
-                ),
-              ),
-              Positioned(
                 top: 0,
                 right: 10,
                 child: Text(
@@ -332,6 +320,10 @@ class _ModificaOC extends StatelessWidget {
         //Datos OC
         // const SizedBox(height: 10),
         _LabelButton(
+          label: ordenCompraTotales.razonSocial ?? "",
+          value: "",
+        ),
+        _LabelButton(
           label: 'Fecha OC',
           value: ordenCompraTotales.fechaCreacion != null
               ? DateFormat('dd/MM/yyyy')
@@ -374,7 +366,7 @@ class _ModificaOC extends StatelessWidget {
                   style: TextStyle(fontSize: 16),
                 ),
                 SizedBox(
-                  height: 300,
+                  height: 250,
                   child: ListView.builder(
                     scrollDirection: Axis.vertical,
                     // itemExtent: 25.0,

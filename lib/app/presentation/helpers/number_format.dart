@@ -25,7 +25,7 @@ NumberFormat numberFormat({required int codmoneda}) {
   late NumberFormat number;
   switch (codmoneda) {
     case 1:
-      number = NumberFormat.currency(locale: 'es_CL');
+      number = NumberFormat.currency(locale: 'es_CL', decimalDigits: 0);
       break;
     case 2:
       number = NumberFormat.currency(locale: "en_US", symbol: "US" r'$ ');

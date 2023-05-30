@@ -118,14 +118,14 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                       '${ordenCompraTotal.proveRutn}-${ordenCompraTotal.proveRutd}',
                       style: const TextStyle(fontWeight: FontWeight.w300),
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'Obs: ${ordenCompraTotal.observaciones}',
+                          '${ordenCompraTotal.razonSocial}',
                           style: const TextStyle(
-                            fontWeight: FontWeight.w300,
+                            fontWeight: FontWeight.w400,
                             fontStyle: FontStyle.italic,
                           ),
                         ),
@@ -174,6 +174,15 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                                       ? DateFormat('dd/MM/yyyy').format(
                                           ordenCompraTotal.fechaCreacion!)
                                       : '',
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                const Text(
+                                  'Observaciones',
+                                  style: TextStyle(fontWeight: FontWeight.w300),
+                                ),
+                                Text(
+                                  ordenCompraTotal.observaciones,
                                   style: const TextStyle(
                                       fontWeight: FontWeight.w400),
                                 ),
