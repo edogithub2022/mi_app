@@ -1,4 +1,5 @@
 import 'package:mi_app/app/domain/models/erp/orden_compra/orden_compra_det.dart';
+import 'package:mi_app/app/domain/models/erp/orden_compra/orden_compra_dist_cc.dart';
 
 class OrdenCompraCab {
   OrdenCompraCab({
@@ -19,6 +20,7 @@ class OrdenCompraCab {
     required this.proveEmail,
     required this.fechaCreacion,
     required this.ordenCompraDets,
+    required this.ordenCompraDistCcs,
   });
 
   int codempresa;
@@ -38,6 +40,7 @@ class OrdenCompraCab {
   String proveEmail;
   DateTime fechaCreacion;
   List<OrdenCompraDet> ordenCompraDets;
+  List<OrdenCompraDistCcs> ordenCompraDistCcs;
 
   factory OrdenCompraCab.fromJson(Map<String, dynamic> json) => OrdenCompraCab(
         codempresa: json["CODEMPRESA"],
@@ -58,6 +61,9 @@ class OrdenCompraCab {
         fechaCreacion: DateTime.parse(json["FECHA_CREACION"]),
         ordenCompraDets: List<OrdenCompraDet>.from(
             json["OrdenCompraDets"].map((x) => OrdenCompraDet.fromJson(x))),
+        ordenCompraDistCcs: List<OrdenCompraDistCcs>.from(
+            json["OrdenCompraDistCcs"]
+                .map((x) => OrdenCompraDistCcs.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -79,5 +85,7 @@ class OrdenCompraCab {
         "FECHA_CREACION": fechaCreacion.toIso8601String(),
         "OrdenCompraDets":
             List<dynamic>.from(ordenCompraDets.map((x) => x.toJson())),
+        "OrdenCompraDistCcs":
+            List<dynamic>.from(ordenCompraDistCcs.map((x) => x.toJson())),
       };
 }

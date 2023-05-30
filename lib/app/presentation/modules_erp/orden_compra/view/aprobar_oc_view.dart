@@ -77,6 +77,8 @@ class _ListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final OrdenCompraBloc bloc = context.watch();
+    final List<String> listData = ['Item 1', 'Item 2', 'Item 3'];
+
     //.copy para romper la referencia y no afecte hasta que persista en la bd
     bloc.selectedOrdenCompraTotales = ordenCompraTotales.copy();
 
@@ -131,6 +133,51 @@ class _ListView extends StatelessWidget {
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.red,
+                  ),
+                ),
+              ),
+
+              //Ver distribucion de Centros de costos
+              Positioned(
+                top: 50,
+                right: 5,
+                child: IconButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Distribucion de Cecos'),
+                          content: SizedBox(
+                            width: double.maxFinite,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: listData.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return ListTile(
+                                  title: Text(listData[index]),
+                                );
+                              },
+                            ),
+                          ),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text('Cerrar'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  icon: Icon(
+                    Icons.article_outlined,
+                    size: 30,
+                    color: Preferences.isDarkmode
+                        ? Colors.white70
+                        : Colors.black45,
                   ),
                 ),
               ),
