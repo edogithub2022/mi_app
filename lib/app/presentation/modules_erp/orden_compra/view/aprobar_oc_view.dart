@@ -338,10 +338,7 @@ class _ModificaOC extends StatelessWidget {
           label: 'Comprador',
           value: ordenCompraTotales.soliCodcomprador,
         ),
-        _LabelButton(
-          label: 'Obs',
-          value: ordenCompraTotales.observaciones,
-        ),
+
         const SizedBox(height: 20),
 
         Padding(
@@ -366,7 +363,7 @@ class _ModificaOC extends StatelessWidget {
                   style: TextStyle(fontSize: 16),
                 ),
                 SizedBox(
-                  height: 250,
+                  height: 220,
                   child: ListView.builder(
                     scrollDirection: Axis.vertical,
                     // itemExtent: 25.0,
@@ -412,6 +409,21 @@ class _ModificaOC extends StatelessWidget {
                     //   );
                     // },
                   ),
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        'Obs: ${ordenCompraTotales.observaciones}',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontStyle: FontStyle.italic,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

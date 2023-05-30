@@ -177,15 +177,6 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                                   style: const TextStyle(
                                       fontWeight: FontWeight.w400),
                                 ),
-                                const Text(
-                                  'Observaciones',
-                                  style: TextStyle(fontWeight: FontWeight.w300),
-                                ),
-                                Text(
-                                  ordenCompraTotal.observaciones,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w400),
-                                ),
                               ],
                             ),
                           ],
@@ -270,6 +261,21 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                               ],
                             ),
                           ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            'Obs: ${ordenCompraTotal.observaciones}',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
                         ),
                       ],
                     ),
