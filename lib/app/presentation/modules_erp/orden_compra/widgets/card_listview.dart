@@ -28,7 +28,7 @@ class CardListView extends StatelessWidget {
             //   top: 0,
             // ),
             width: double.infinity,
-            height: 330,
+            height: 370,
             decoration: _cardBorders(),
             child: Stack(
               children: [
@@ -41,7 +41,7 @@ class CardListView extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 300,
+                  top: 340,
                   right: 0,
                   child: _Total(
                     total: ordenCompraTotal.totalBruto,
@@ -119,7 +119,7 @@ class _Total extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Text(
             number.format(total),
-            style: const TextStyle(color: Colors.black, fontSize: 15),
+            style: const TextStyle(color: Colors.red, fontSize: 15),
           ),
         ),
       ),

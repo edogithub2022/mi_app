@@ -106,19 +106,10 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
             child: CardListView(
               ordenCompraTotal: ordenCompraTotal,
               child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 45, horizontal: 5),
+                margin: const EdgeInsets.symmetric(vertical: 35, horizontal: 5),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      ordenCompraTotal.proveNombre,
-                      style: const TextStyle(fontSize: 15),
-                    ),
-                    Text(
-                      '${ordenCompraTotal.proveRutn}-${ordenCompraTotal.proveRutd}',
-                      style: const TextStyle(fontWeight: FontWeight.w300),
-                    ),
-                    const SizedBox(height: 15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -127,153 +118,240 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                           style: const TextStyle(
                             fontWeight: FontWeight.w400,
                             fontStyle: FontStyle.italic,
+                            fontSize: 10,
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 5),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                // Text(
-                                //   'SC: ${ordenCompraTotal.numeroSolicitud}',
-                                //   style: const TextStyle(
-                                //       fontWeight: FontWeight.w300),
-                                // ),
-                                const Text(
-                                  'Solitado por',
-                                  style: TextStyle(fontWeight: FontWeight.w300),
-                                ),
-                                Text(
-                                  ordenCompraTotal.soliCodsolicitador,
-                                  textAlign: TextAlign.right,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w400),
-                                ),
-                                const Text(
-                                  'Comprador',
-                                  style: TextStyle(fontWeight: FontWeight.w300),
-                                ),
-                                Text(
-                                  ordenCompraTotal.soliCodcomprador,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w400),
-                                ),
-                                const Text(
-                                  'Fecha OC',
-                                  style: TextStyle(fontWeight: FontWeight.w300),
-                                ),
-                                Text(
-                                  ordenCompraTotal.fechaCreacion != null
-                                      ? DateFormat('dd/MM/yyyy').format(
-                                          ordenCompraTotal.fechaCreacion!)
-                                      : '',
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            const Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'NETO',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                ),
-                                Text(
-                                  'IVA',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                ),
-                                Text(
-                                  'ESPECIFICO',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                ),
-                                Text(
-                                  'EXENTO',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  ' : ',
-                                  style: TextStyle(fontWeight: FontWeight.w300),
-                                ),
-                                Text(
-                                  ' : ',
-                                  style: TextStyle(fontWeight: FontWeight.w300),
-                                ),
-                                Text(
-                                  ' : ',
-                                  style: TextStyle(fontWeight: FontWeight.w300),
-                                ),
-                                Text(
-                                  ' : ',
-                                  style: TextStyle(fontWeight: FontWeight.w300),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  number.format(ordenCompraTotal.totalNeto),
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w300),
-                                ),
-                                Text(
-                                  number.format(ordenCompraTotal.totalIva),
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w300),
-                                ),
-                                Text(
-                                  number
-                                      .format(ordenCompraTotal.totalEspecifico),
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w300),
-                                ),
-                                Text(
-                                  number.format(ordenCompraTotal.totalExento),
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w300),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
                     const SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                    Column(
                       children: [
-                        Flexible(
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.black45, // Color del borde
+                              width: 0.5, // Ancho del borde
+                            ),
+                            // borderRadius: BorderRadius.circular(
+                            //     10.0), // Radio de los bordes
+                          ),
+                          padding: const EdgeInsets.all(
+                              8.0), // Agrega un padding de 8.0 en todos los lados
+
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                children: [
+                                  const Text(
+                                    'Solitado por',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w300),
+                                  ),
+                                  Text(
+                                    ordenCompraTotal.soliCodsolicitador,
+                                    textAlign: TextAlign.right,
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height:
+                                    30, // Ajusta la altura según tus necesidades
+                                child: VerticalDivider(
+                                  color: Colors.black45,
+                                  thickness: 0.5,
+                                ),
+                              ),
+                              Column(
+                                children: [
+                                  const Text(
+                                    'Comprador',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w300),
+                                  ),
+                                  Text(
+                                    ordenCompraTotal.soliCodcomprador,
+                                    textAlign: TextAlign.right,
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height:
+                                    30, // Ajusta la altura según tus necesidades
+                                child: VerticalDivider(
+                                  color: Colors.black45,
+                                  thickness: 0.5,
+                                ),
+                              ),
+                              Column(
+                                children: [
+                                  const Text(
+                                    'Fecha OC',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w300),
+                                  ),
+                                  Text(
+                                    ordenCompraTotal.fechaCreacion != null
+                                        ? DateFormat('dd/MM/yyyy').format(
+                                            ordenCompraTotal.fechaCreacion!)
+                                        : '',
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Flexible(
+                              child: Text(
+                                'Obs: ${ordenCompraTotal.observaciones}',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w300,
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        FittedBox(
+                          fit: BoxFit.contain,
                           child: Text(
-                            'Obs: ${ordenCompraTotal.observaciones}',
+                            ordenCompraTotal.proveNombre,
                             style: const TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.italic,
+                                fontSize: 12, fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                        Text(
+                          '${ordenCompraTotal.proveRutn}-${ordenCompraTotal.proveRutd}',
+                          style: const TextStyle(fontWeight: FontWeight.w300),
+                        ),
+                        const SizedBox(height: 10),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 1,
+                            right: 1,
+                          ),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.blueGrey[100],
+                              border: Border.all(
+                                color: Colors.black45,
+                                width: 0.5,
+                              ),
+                            ),
+                            padding: const EdgeInsets.all(
+                                8.0), // Agrega un padding de 8.0 en todos los lados
+
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Expanded(
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.vertical,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'NETO',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                        Divider(
+                                          thickness: 0.5,
+                                          color: Colors.black45,
+                                        ),
+                                        Text(
+                                          'IVA',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 12),
+                                        ),
+                                        Divider(
+                                          thickness: 0.5,
+                                          color: Colors.black45,
+                                        ),
+                                        Text(
+                                          'ESPECIFICO',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 12),
+                                        ),
+                                        Divider(
+                                          thickness: 0.5,
+                                          color: Colors.black45,
+                                        ),
+                                        Text(
+                                          'EXENTO',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 12),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.vertical,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          number.format(
+                                              ordenCompraTotal.totalNeto),
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.w300),
+                                        ),
+                                        const Divider(
+                                          thickness: 0.5,
+                                          color: Colors.black45,
+                                        ),
+                                        Text(
+                                          number.format(
+                                              ordenCompraTotal.totalIva),
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.w300),
+                                        ),
+                                        const Divider(
+                                          thickness: 0.5,
+                                          color: Colors.black45,
+                                        ),
+                                        Text(
+                                          number.format(
+                                              ordenCompraTotal.totalEspecifico),
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.w300),
+                                        ),
+                                        const Divider(
+                                          thickness: 0.5,
+                                          color: Colors.black45,
+                                        ),
+                                        Text(
+                                          number.format(
+                                              ordenCompraTotal.totalExento),
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.w300),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
