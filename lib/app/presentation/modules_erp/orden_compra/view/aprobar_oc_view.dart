@@ -250,6 +250,7 @@ class _ListView extends StatelessWidget {
         const SizedBox(height: 10),
         Container(
           decoration: BoxDecoration(
+            color: Colors.blueGrey[50],
             border: Border.all(
               color: Colors.black45, // Color del borde
               width: 0.5, // Ancho del borde
@@ -549,33 +550,66 @@ class _ListView extends StatelessWidget {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: const Text('Distribución de Cecos'),
+                        backgroundColor: Colors.black26,
+                        title: const Text('Distribución de CeCos',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.white)),
                         content: ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          itemBuilder: (context, i) => Card(
-                            child: ListTile(
-                              title: Wrap(
-                                spacing: 5,
-                                runSpacing: 5,
-                                children: [
-                                  Text(
-                                    'Art: ${ocDet.first.ordenCompraDistCcs[i].codArticulo}',
-                                    style: const TextStyle(fontSize: 14),
-                                  ),
-                                  Text(
-                                    'Cecos: ${ocDet.first.ordenCompraDistCcs[i].codCentroCosto}',
-                                    style: const TextStyle(fontSize: 14),
-                                  ),
-                                  Text(
-                                    number.format(ocDet
-                                        .first.ordenCompraDistCcs[i].monto),
-                                    style: const TextStyle(fontSize: 14),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
                           itemCount: ocDet.first.ordenCompraDistCcs.length,
+                          itemBuilder: (context, index) {
+                            var item = ocDet.first.ordenCompraDistCcs[index];
+                            return Card(
+                              child: ListTile(
+                                title: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Text(
+                                          'Artículo:',
+                                          style: TextStyle(fontSize: 16),
+                                        ),
+                                        Text(
+                                          item.codArticulo,
+                                          style: const TextStyle(fontSize: 16),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Text(
+                                          'CeCo:',
+                                          style: TextStyle(fontSize: 16),
+                                        ),
+                                        Text(
+                                          '${item.codCentroCosto}',
+                                          style: const TextStyle(fontSize: 16),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Text(
+                                          'Monto:',
+                                          style: TextStyle(fontSize: 16),
+                                        ),
+                                        Text(
+                                          number.format(item.monto),
+                                          style: const TextStyle(fontSize: 16),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
                         ),
                         actions: <Widget>[
                           TextButton(
