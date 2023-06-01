@@ -119,7 +119,8 @@ class _Total extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Text(
             number.format(total),
-            style: const TextStyle(color: Colors.red, fontSize: 15),
+            style: const TextStyle(
+                color: Colors.red, fontSize: 15, fontWeight: FontWeight.w400),
           ),
         ),
       ),

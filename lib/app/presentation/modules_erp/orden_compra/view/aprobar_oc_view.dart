@@ -250,7 +250,7 @@ class _ListView extends StatelessWidget {
         const SizedBox(height: 10),
         Container(
           decoration: BoxDecoration(
-            color: Colors.blueGrey[50],
+            color: Colors.black12,
             border: Border.all(
               color: Colors.black45, // Color del borde
               width: 0.5, // Ancho del borde
@@ -351,7 +351,7 @@ class _ListView extends StatelessWidget {
         //D E T A L L E
 
         SizedBox(
-          height: 220,
+          height: 250,
           child: ListView.builder(
             scrollDirection: Axis.vertical,
             // itemExtent: 25.0,
@@ -384,15 +384,16 @@ class _ListView extends StatelessWidget {
                 ),
               ),
             ),
-            itemCount: ocDet.first.ordenCompraDets.length,
+            itemCount:
+                ocDet.isNotEmpty ? ocDet.first.ordenCompraDets.length : 0,
           ),
         ),
 
         //T O T A L E S
-        const SizedBox(height: 10),
+        const SizedBox(height: 15),
         Container(
           decoration: BoxDecoration(
-            color: Colors.blueGrey[100],
+            color: Colors.black12,
             border: Border.all(
               color: Colors.black45,
               width: 0.5,
@@ -555,7 +556,9 @@ class _ListView extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: TextStyle(color: Colors.white)),
                         content: ListView.builder(
-                          itemCount: ocDet.first.ordenCompraDistCcs.length,
+                          itemCount: ocDet.isNotEmpty
+                              ? ocDet.first.ordenCompraDistCcs.length
+                              : 0,
                           itemBuilder: (context, index) {
                             var item = ocDet.first.ordenCompraDistCcs[index];
                             return Card(

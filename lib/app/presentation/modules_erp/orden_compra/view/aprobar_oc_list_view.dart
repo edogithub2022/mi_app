@@ -128,6 +128,7 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
+                            color: Colors.black12,
                             border: Border.all(
                               color: Colors.black45, // Color del borde
                               width: 0.5, // Ancho del borde
@@ -244,7 +245,7 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                           ),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Colors.blueGrey[100],
+                              // color: Colors.black12,
                               border: Border.all(
                                 color: Colors.black45,
                                 width: 0.5,
