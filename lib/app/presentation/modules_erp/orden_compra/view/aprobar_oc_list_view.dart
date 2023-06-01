@@ -316,7 +316,8 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                                           number.format(
                                               ordenCompraTotal.totalNeto),
                                           style: const TextStyle(
-                                              fontWeight: FontWeight.w300),
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 12),
                                         ),
                                         const Divider(
                                           thickness: 0.5,
@@ -326,7 +327,8 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                                           number.format(
                                               ordenCompraTotal.totalIva),
                                           style: const TextStyle(
-                                              fontWeight: FontWeight.w300),
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 12),
                                         ),
                                         const Divider(
                                           thickness: 0.5,
@@ -336,7 +338,8 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                                           number.format(
                                               ordenCompraTotal.totalEspecifico),
                                           style: const TextStyle(
-                                              fontWeight: FontWeight.w300),
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 12),
                                         ),
                                         const Divider(
                                           thickness: 0.5,
@@ -346,7 +349,8 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                                           number.format(
                                               ordenCompraTotal.totalExento),
                                           style: const TextStyle(
-                                              fontWeight: FontWeight.w300),
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 12),
                                         ),
                                       ],
                                     ),
