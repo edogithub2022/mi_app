@@ -197,7 +197,7 @@ class _ListView extends StatelessWidget {
             _detalle(number),
 
             //GRABAR O RECHAZAR
-            const SizedBox(height: 30),
+            const SizedBox(height: 15),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -367,12 +367,17 @@ class _ListView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text("Articulo:"),
-                      Text(
-                        '${ocDet.first.ordenCompraDets[i].codArticulo} - ${ocDet.first.ordenCompraDets[i].nomArticulo}',
-                        style: const TextStyle(fontSize: 14),
+                      Flexible(
+                        child: Text(
+                          '${ocDet.first.ordenCompraDets[i].codArticulo} - ${ocDet.first.ordenCompraDets[i].nomArticulo}',
+                          style: const TextStyle(fontSize: 14),
+                        ),
                       ),
                     ],
                   ),
+                  const SizedBox(
+                      height: 10), // Espacio vertical entre las filas
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -578,86 +583,106 @@ class _ListView extends StatelessWidget {
                         content: SingleChildScrollView(
                           child: SizedBox(
                             width: double.infinity,
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: ocDet.isNotEmpty
-                                  ? ocDet.first.ordenCompraDistCcs.length
-                                  : 0,
-                              itemBuilder: (context, index) {
-                                var item =
-                                    ocDet.first.ordenCompraDistCcs[index];
-                                return Card(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            const Text(
-                                              'Artículo:',
-                                              style: TextStyle(fontSize: 16),
-                                            ),
-                                            Text(
-                                              item.codArticulo,
-                                              style:
-                                                  const TextStyle(fontSize: 16),
-                                            ),
-                                          ],
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ListView.builder(
+                                  shrinkWrap: true,
+                                  physics:
+                                      NeverScrollableScrollPhysics(), // Deshabilita el desplazamiento del ListView interno
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: ocDet.isNotEmpty
+                                      ? ocDet.first.ordenCompraDistCcs.length
+                                      : 0,
+                                  itemBuilder: (context, index) {
+                                    var item =
+                                        ocDet.first.ordenCompraDistCcs[index];
+                                    return Container(
+                                      constraints: const BoxConstraints(
+                                        maxHeight: 230,
+                                      ),
+                                      child: Card(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              const Text(
+                                                'Artículo:',
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.w300),
+                                              ),
+                                              Flexible(
+                                                child: Text(
+                                                  item.codArticulo,
+                                                  style: const TextStyle(
+                                                      fontSize: 16),
+                                                ),
+                                              ),
+                                              const SizedBox(height: 5),
+                                              const Text(
+                                                'Centro de Costo:',
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.w300),
+                                              ),
+                                              Flexible(
+                                                child: Text(
+                                                  item.ccosto?.descripcion ??
+                                                      "",
+                                                  style: const TextStyle(
+                                                      fontSize: 16),
+                                                ),
+                                              ),
+                                              const SizedBox(height: 5),
+                                              const Text(
+                                                'Elemento de Costo:',
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.w300),
+                                              ),
+                                              Flexible(
+                                                child: Text(
+                                                  item.elementoCosto
+                                                          ?.descripcion ??
+                                                      "",
+                                                  style: const TextStyle(
+                                                      fontSize: 16),
+                                                ),
+                                              ),
+                                              const SizedBox(height: 5),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  const Text(
+                                                    'Monto:',
+                                                    style:
+                                                        TextStyle(fontSize: 16),
+                                                  ),
+                                                  Flexible(
+                                                    child: Text(
+                                                      number.format(item.monto),
+                                                      style: const TextStyle(
+                                                          fontSize: 16),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            const Text(
-                                              'CeCo:',
-                                              style: TextStyle(fontSize: 16),
-                                            ),
-                                            Text(
-                                              item.ccosto.descripcion,
-                                              style:
-                                                  const TextStyle(fontSize: 16),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            const Text(
-                                              'ElemCosto:',
-                                              style: TextStyle(fontSize: 16),
-                                            ),
-                                            Text(
-                                              item.elementoCosto.descripcion,
-                                              style:
-                                                  const TextStyle(fontSize: 16),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            const Text(
-                                              'Monto:',
-                                              style: TextStyle(fontSize: 16),
-                                            ),
-                                            Text(
-                                              number.format(item.monto),
-                                              style:
-                                                  const TextStyle(fontSize: 16),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
                             ),
                           ),
                         ),
