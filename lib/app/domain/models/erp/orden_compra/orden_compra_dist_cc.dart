@@ -1,3 +1,6 @@
+import 'package:mi_app/app/domain/models/erp/orden_compra/ccosto.dart';
+import 'package:mi_app/app/domain/models/erp/orden_compra/elemento_costo.dart';
+
 class OrdenCompraDistCcs {
   OrdenCompraDistCcs({
     required this.nroOC,
@@ -5,6 +8,8 @@ class OrdenCompraDistCcs {
     required this.codCentroCosto,
     required this.ctaContable,
     required this.monto,
+    required this.ccosto,
+    required this.elementoCosto,
   });
 
   int nroOC;
@@ -12,6 +17,8 @@ class OrdenCompraDistCcs {
   int codCentroCosto;
   int ctaContable;
   double monto;
+  Ccosto ccosto;
+  ElementoCosto elementoCosto;
 
   factory OrdenCompraDistCcs.fromJson(Map<String, dynamic> json) =>
       OrdenCompraDistCcs(
@@ -20,6 +27,8 @@ class OrdenCompraDistCcs {
         codCentroCosto: json["COD_CENTROCOSTO"],
         ctaContable: json["CTACONTABLE"],
         monto: json["MONTO"]?.toDouble(),
+        ccosto: Ccosto.fromJson(json["Ccosto"]),
+        elementoCosto: ElementoCosto.fromJson(json["ElementoCosto"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -28,5 +37,7 @@ class OrdenCompraDistCcs {
         "COD_CENTROCOSTO": codCentroCosto,
         "CTACONTABLE": ctaContable,
         "MONTO": monto,
+        "Ccosto": ccosto.toJson(),
+        "ElementoCosto": elementoCosto.toJson(),
       };
 }

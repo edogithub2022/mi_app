@@ -75,7 +75,8 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
     OrdenCompraBloc bloc,
   ) {
     return ListView.builder(
-        itemCount: ordenCompraTotales.length,
+        itemCount:
+            ordenCompraTotales.isNotEmpty ? ordenCompraTotales.length : 0,
         itemBuilder: (BuildContext context, index) {
           OrdenCompraTotales ordenCompraTotal = ordenCompraTotales[index];
           NumberFormat number =

@@ -354,38 +354,49 @@ class _ListView extends StatelessWidget {
           height: 250,
           child: ListView.builder(
             scrollDirection: Axis.vertical,
-            // itemExtent: 25.0,
-            itemBuilder: (context, i) => Card(
-              child: ListTile(
-                title: Wrap(
-                  // spacing: 1.0, // gap between adjacent chips
-                  // runSpacing: 4.0, // gap between lines
-                  children: [
-                    Text(
-                      ocDet.first.ordenCompraDets[i].codArticulo.toString(),
-                      style: const TextStyle(fontSize: 14),
-                    ),
-                    const SizedBox(width: 5),
-                    Text(
-                      '${ocDet.first.ordenCompraDets[i].nomArticulo}, ',
-                      style: const TextStyle(fontSize: 14),
-                    ),
-                    const SizedBox(width: 5),
-                    Text(
-                      NumberFormat('#,##0.00')
-                          .format(ocDet.first.ordenCompraDets[i].cantidad),
-                      style: const TextStyle(fontSize: 14),
-                    ),
-                  ],
-                ),
-                trailing: Text(
-                  number.format(ocDet.first.ordenCompraDets[i].totalNeto),
-                  style: const TextStyle(fontSize: 14),
-                ),
-              ),
-            ),
             itemCount:
                 ocDet.isNotEmpty ? ocDet.first.ordenCompraDets.length : 0,
+            // itemExtent: 25.0,
+            itemBuilder: (context, i) => Card(
+                child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Articulo:"),
+                      Text(
+                        '${ocDet.first.ordenCompraDets[i].codArticulo} - ${ocDet.first.ordenCompraDets[i].nomArticulo}',
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Cantidad:"),
+                      Text(
+                        NumberFormat('#,##0.00')
+                            .format(ocDet.first.ordenCompraDets[i].cantidad),
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Monto:"),
+                      Text(
+                        number.format(ocDet.first.ordenCompraDets[i].totalNeto),
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            )),
           ),
         ),
 
@@ -546,73 +557,109 @@ class _ListView extends StatelessWidget {
               ),
               // Ver distribución de Centros de costos
               IconButton(
+                icon: Icon(
+                  Icons.article_outlined,
+                  size: 30,
+                  color:
+                      Preferences.isDarkmode ? Colors.white70 : Colors.black45,
+                ),
                 onPressed: () {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
+                        contentPadding: const EdgeInsets.all(5.0),
                         backgroundColor: Colors.black26,
-                        title: const Text('Distribución de CeCos',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white)),
-                        content: ListView.builder(
-                          itemCount: ocDet.isNotEmpty
-                              ? ocDet.first.ordenCompraDistCcs.length
-                              : 0,
-                          itemBuilder: (context, index) {
-                            var item = ocDet.first.ordenCompraDistCcs[index];
-                            return Card(
-                              child: ListTile(
-                                title: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                        title: const Text(
+                          'Distribución de CeCos',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        content: SingleChildScrollView(
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: ocDet.isNotEmpty
+                                  ? ocDet.first.ordenCompraDistCcs.length
+                                  : 0,
+                              itemBuilder: (context, index) {
+                                var item =
+                                    ocDet.first.ordenCompraDistCcs[index];
+                                return Card(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        const Text(
-                                          'Artículo:',
-                                          style: TextStyle(fontSize: 16),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            const Text(
+                                              'Artículo:',
+                                              style: TextStyle(fontSize: 16),
+                                            ),
+                                            Text(
+                                              item.codArticulo,
+                                              style:
+                                                  const TextStyle(fontSize: 16),
+                                            ),
+                                          ],
                                         ),
-                                        Text(
-                                          item.codArticulo,
-                                          style: const TextStyle(fontSize: 16),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            const Text(
+                                              'CeCo:',
+                                              style: TextStyle(fontSize: 16),
+                                            ),
+                                            Text(
+                                              item.ccosto.descripcion,
+                                              style:
+                                                  const TextStyle(fontSize: 16),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            const Text(
+                                              'ElemCosto:',
+                                              style: TextStyle(fontSize: 16),
+                                            ),
+                                            Text(
+                                              item.elementoCosto.descripcion,
+                                              style:
+                                                  const TextStyle(fontSize: 16),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            const Text(
+                                              'Monto:',
+                                              style: TextStyle(fontSize: 16),
+                                            ),
+                                            Text(
+                                              number.format(item.monto),
+                                              style:
+                                                  const TextStyle(fontSize: 16),
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        const Text(
-                                          'CeCo:',
-                                          style: TextStyle(fontSize: 16),
-                                        ),
-                                        Text(
-                                          '${item.codCentroCosto}',
-                                          style: const TextStyle(fontSize: 16),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        const Text(
-                                          'Monto:',
-                                          style: TextStyle(fontSize: 16),
-                                        ),
-                                        Text(
-                                          number.format(item.monto),
-                                          style: const TextStyle(fontSize: 16),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
                         ),
                         actions: <Widget>[
                           TextButton(
@@ -626,12 +673,6 @@ class _ListView extends StatelessWidget {
                     },
                   );
                 },
-                icon: Icon(
-                  Icons.article_outlined,
-                  size: 30,
-                  color:
-                      Preferences.isDarkmode ? Colors.white70 : Colors.black45,
-                ),
               ),
             ],
           ),
@@ -640,350 +681,3 @@ class _ListView extends StatelessWidget {
     );
   }
 }
-
-// class _LabelButton extends StatelessWidget {
-//   final String label, value;
-//   final VoidCallback? onPressed;
-//   const _LabelButton({
-//     required this.label,
-//     required this.value,
-//     this.onPressed,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SizedBox(
-//       height: 20.00,
-//       child: ListTile(
-//         // dense: true,
-//         // visualDensity: const VisualDensity(vertical: -4),
-
-//         onTap: onPressed,
-//         // contentPadding: const EdgeInsets.only(top: 20),
-//         leading: Text(
-//           label,
-//           style: const TextStyle(fontWeight: FontWeight.w500),
-//         ),
-//         trailing: Row(
-//           mainAxisSize: MainAxisSize.min,
-//           children: [
-//             Text(
-//               value,
-//               style: const TextStyle(fontWeight: FontWeight.bold),
-//             ),
-//             const SizedBox(height: 5),
-//             Icon(
-//               Icons.chevron_right_outlined,
-//               size: 25,
-//               color: getColorIconOnPressed(onPressed),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-
-//   Color getColorIconOnPressed(VoidCallback? onPressed) {
-//     if (onPressed == null) return Colors.transparent;
-
-//     if (Preferences.isDarkmode) return Colors.white;
-
-//     return Colors.black45;
-//   }
-// }
-
-// class _ModificaOC extends StatelessWidget {
-//   final OrdenCompraTotales ordenCompraTotales;
-//   final List<OrdenCompraCab> ocDet;
-
-//   const _ModificaOC({
-//     required this.ordenCompraTotales,
-//     required this.ocDet,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     //Para dar formato a los montos pesos o dolar
-//     NumberFormat number =
-//         numberFormat(codmoneda: ordenCompraTotales.codmoneda ?? 1);
-//     final OrdenCompraBloc bloc = context.watch();
-
-//     void updateDisplayInput(
-//       BuildContext context, {
-//       required String msgErr,
-//       final TipoInput? tipoInput,
-//       final String? title,
-//     }) async {
-//       final OrdenCompraTotales selectedOrdenCompraTotales =
-//           bloc.selectedOrdenCompraTotales;
-
-//       var value = await showInputDialogOc(
-//         context,
-//         tipoInput: tipoInput,
-//         title: title,
-//         selectedOCtot: selectedOrdenCompraTotales,
-//       );
-
-//       if (value == '') {
-//         () {
-//           displayDialogIOS(
-//             context,
-//             msgErr,
-//           );
-//         }();
-//         value = null;
-//       }
-
-//       if (value != null) {
-//         // ignore: use_build_context_synchronously
-//         // ProgressDialog.show(context);
-
-//         switch (tipoInput) {
-//           case TipoInput.observaciones:
-//             selectedOrdenCompraTotales.observaciones = value;
-//             break;
-//           case TipoInput.rechazada:
-//             selectedOrdenCompraTotales.motivoRechazo = value;
-//             selectedOrdenCompraTotales.estadoRecepcion = 'RECHAZADA';
-//             break;
-//           case TipoInput.aprobada:
-//             selectedOrdenCompraTotales.estadoRecepcion = value;
-//             break;
-//           default: // Without this, you see a WARNING.
-//         }
-
-//         await bloc.updateEstadoOc(
-//           codempresa: '1',
-//           correlativo: selectedOrdenCompraTotales.correlativo.toString(),
-//           motivoRechazo: selectedOrdenCompraTotales.motivoRechazo.toString(),
-//           estado: selectedOrdenCompraTotales.estadoRecepcion,
-//         );
-
-//         // ignore: use_build_context_synchronously
-//         // Navigator.pop(context);
-
-//         final state = bloc.state;
-//         state.when(
-//           loading: () => '',
-//           failed: (failure) => NotificationsHelper.showSnacbar(failure.name),
-//           error: (errors) {
-//             final String msg = errors
-//                 .toString()
-//                 .replaceAll("body[", "\n")
-//                 .replaceAll("[", "")
-//                 .replaceAll("]", "");
-//             displayDialogIOS(context, msg);
-//           },
-//           loaded: (_) => null,
-//           loadedDET: (_) => null,
-//           loadeds: (_) => null,
-//           loadedReturning:
-//               (List<OrdenCompraCabReturning> ordenCompraCabReturning) {
-//             String newValue = value ?? '';
-//             String msg = ' :  $newValue';
-//             switch (tipoInput) {
-//               case TipoInput.aprobada:
-//                 msg =
-//                     'Estado actualizado -> ${ordenCompraTotales.estadoRecepcion} $msg';
-//                 ordenCompraTotales.estadoRecepcion = newValue;
-//                 break;
-//               case TipoInput.rechazada:
-//                 newValue = 'RECHAZADA';
-//                 msg = ' :  $newValue';
-//                 msg =
-//                     'Estado actualizado -> ${ordenCompraTotales.estadoRecepcion} $msg';
-//                 ordenCompraTotales.estadoRecepcion = newValue;
-//                 break;
-//               case TipoInput.observaciones:
-//                 msg =
-//                     'Observaciones actualizado -> ${ordenCompraTotales.observaciones} $msg';
-//                 ordenCompraTotales.observaciones = newValue;
-//                 break;
-//               default:
-//                 msg = "Sin actualizaciones"; // Without this, you see a WARNING.
-//             }
-
-//             NotificationsHelper.showSnacbar(msg);
-//           },
-//         );
-//       }
-//     }
-
-//     return Column(
-//       children: [
-//         //Datos OC
-//         // const SizedBox(height: 10),
-//         _LabelButton(
-//           label: ordenCompraTotales.razonSocial ?? "",
-//           value: "",
-//         ),
-//         _LabelButton(
-//           label: 'Fecha OC',
-//           value: ordenCompraTotales.fechaCreacion != null
-//               ? DateFormat('dd/MM/yyyy')
-//                   .format(ordenCompraTotales.fechaCreacion!)
-//               : '',
-//         ),
-//         _LabelButton(
-//           label: 'Solicitado por',
-//           value: ordenCompraTotales.soliCodsolicitador,
-//         ),
-//         _LabelButton(
-//           label: 'Comprador',
-//           value: ordenCompraTotales.soliCodcomprador,
-//         ),
-
-//         const SizedBox(height: 20),
-
-//         Padding(
-//           padding: const EdgeInsets.only(left: 10, right: 10),
-//           child: Container(
-//             decoration: const BoxDecoration(
-//               // border: Border.all(width: 1, color: Colors.black26),
-//               boxShadow: [
-//                 BoxShadow(
-//                   color: Colors.black12,
-//                   blurRadius: 10,
-//                   offset: Offset(0, 5),
-//                 ),
-//               ],
-//             ),
-//             padding: const EdgeInsets.only(left: 5, right: 5),
-//             child: Column(
-//               // crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 const Text(
-//                   'Detalle',
-//                   style: TextStyle(fontSize: 16),
-//                 ),
-//                 SizedBox(
-//                   height: 220,
-//                   child: ListView.builder(
-//                     scrollDirection: Axis.vertical,
-//                     // itemExtent: 25.0,
-//                     itemBuilder: (context, i) => Card(
-//                       child: ListTile(
-//                         title: Wrap(
-//                           // spacing: 1.0, // gap between adjacent chips
-//                           // runSpacing: 4.0, // gap between lines
-//                           children: [
-//                             Text(
-//                               ocDet.first.ordenCompraDets[i].codArticulo
-//                                   .toString(),
-//                               style: const TextStyle(fontSize: 14),
-//                             ),
-//                             const SizedBox(width: 5),
-//                             Text(
-//                               '${ocDet.first.ordenCompraDets[i].nomArticulo}, ',
-//                               style: const TextStyle(fontSize: 14),
-//                             ),
-//                             const SizedBox(width: 5),
-//                             Text(
-//                               NumberFormat('#,##0.00').format(
-//                                   ocDet.first.ordenCompraDets[i].cantidad),
-//                               style: const TextStyle(fontSize: 14),
-//                             ),
-//                           ],
-//                         ),
-//                         trailing: Text(
-//                           number
-//                               .format(ocDet.first.ordenCompraDets[i].totalNeto),
-//                           style: const TextStyle(fontSize: 14),
-//                         ),
-//                       ),
-//                     ),
-//                     // separatorBuilder: (_, __) => const Divider(),
-//                     itemCount: ocDet.first.ordenCompraDets.length,
-//                     // separatorBuilder: (BuildContext context, int index) {
-//                     //   return const Divider(
-//                     //     height: 1.0,
-//                     //     thickness: 1.5,
-//                     //     indent: 20,
-//                     //     endIndent: 20,
-//                     //   );
-//                     // },
-//                   ),
-//                 ),
-//                 const SizedBox(height: 10),
-//                 Row(
-//                   mainAxisAlignment: MainAxisAlignment.start,
-//                   children: [
-//                     Flexible(
-//                       child: Text(
-//                         'Obs: ${ordenCompraTotales.observaciones}',
-//                         style: const TextStyle(
-//                           fontWeight: FontWeight.w400,
-//                           fontStyle: FontStyle.italic,
-//                         ),
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-
-//         const SizedBox(height: 10),
-//         _LabelButton(
-//           label: 'Total Neto',
-//           value: number.format(ordenCompraTotales.totalNeto),
-//           onPressed: null,
-//           // sessionProvider.access['usuariosPlus'] ?? false
-//           // ? () => updateDisplayInput(
-//           //       context,
-//           //       msgErr: 'Ingrese un Rol valido',
-//           //       tipoInput: TipoInput.dropdownButtonFormField,
-//           //       title: "Ingrese nuevo Rol:",
-//           //     )
-//           // : null,
-//         ),
-//         _LabelButton(
-//           label: 'Total IVA',
-//           value: number.format(ordenCompraTotales.totalIva),
-//         ),
-//         _LabelButton(
-//           label: 'Impuesto Especifico',
-//           value: number.format(ordenCompraTotales.totalEspecifico),
-//         ),
-//         _LabelButton(
-//           label: 'Total Exento',
-//           value: number.format(ordenCompraTotales.totalExento),
-//         ),
-//         const SizedBox(height: 10),
-//         _LabelButton(
-//           label: 'TOTAL',
-//           value: number.format(ordenCompraTotales.totalBruto),
-//         ),
-
-//         const SizedBox(height: 30),
-//         Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceAround,
-//           children: [
-//             FloatingActionButton(
-//               heroTag: "btn1",
-//               backgroundColor: Colors.red[300],
-//               child: const Icon(Icons.close),
-//               onPressed: () => updateDisplayInput(
-//                 context,
-//                 msgErr: 'Debe ingeresar un motivo de rechazo',
-//                 tipoInput: TipoInput.rechazada,
-//                 // title: "Aprobar OC",
-//               ),
-//             ),
-//             FloatingActionButton(
-//               heroTag: "btn2",
-//               child: const Icon(Icons.check),
-//               onPressed: () => updateDisplayInput(
-//                 context,
-//                 msgErr: 'Estado erroneo',
-//                 tipoInput: TipoInput.aprobada,
-//                 // title: "Aprobar OC",
-//               ),
-//             ),
-//           ],
-//         ),
-//       ],
-//     );
-//   }
-// }

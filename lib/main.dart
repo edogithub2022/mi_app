@@ -11,8 +11,8 @@ import 'package:mi_app/app/my_app.dart';
 import 'package:mi_app/app/presentation/helpers/preferences.dart';
 import 'package:mi_app/app/presentation/theme/providers/theme_provider.dart';
 
-// const String enviroment = "desarrollo";
-const String enviroment = "produccion";
+const String enviroment = "desarrollo";
+// const String enviroment = "produccion";
 const String http = enviroment == 'desarrollo'
     ? 'http://192.168.1.94'
     : 'http://34.229.130.150';
