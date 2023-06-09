@@ -11,13 +11,19 @@ import 'package:mi_app/app/presentation/modules_erp/orden_compra/widgets/card_li
 import 'package:mi_app/app/presentation/widgets/widgets.dart';
 
 class AprobarOcListView extends StatefulWidget {
-  const AprobarOcListView({Key? key}) : super(key: key);
+  final int codempresa;
+  const AprobarOcListView({
+    Key? key,
+    required this.codempresa,
+  }) : super(key: key);
 
   @override
   State<AprobarOcListView> createState() => _AprobarOcListViewState();
 }
 
 class _AprobarOcListViewState extends State<AprobarOcListView> {
+  late int codempresa = widget.codempresa;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,8 +31,8 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
       child: ChangeNotifierProvider(
         create: (_) => OrdenCompraBloc(
           erpRepository: context.read(),
-        )..init(
-            codempresa: "",
+        )..getOcByEmpresa(
+            codempresa: codempresa.toString(),
             estado: 'PENDIENTE',
           ),
         builder: (context, _) {
@@ -37,7 +43,20 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
           return Scaffold(
             appBar: AppBar(
               centerTitle: true,
-              title: const Text("Aprobacion OC"),
+              title: Row(
+                children: [
+                  // Flecha para ir a la página anterior
+                  IconButton(
+                    onPressed: () {
+                      // Navigator.of(context).pop();
+                      Navigator.pushReplacementNamed(context, 'aprobarOc');
+                    },
+                    icon: const Icon(Icons.arrow_back_ios_new,
+                        size: 20, color: Colors.white70),
+                  ),
+                  const Text("Aprobacion OC"),
+                ],
+              ),
             ),
             drawer: SideMenu(
               urlLogo: usuario!.urlLogo ??
@@ -63,6 +82,7 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
               loadedDET: (_) => null,
               loaded: (_) => null,
               loadedReturning: (_) => null,
+              loadedByEmpresas: (_) => null,
             ),
           );
         },

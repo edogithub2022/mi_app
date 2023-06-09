@@ -1,6 +1,7 @@
 import 'package:mi_app/app/data/services/remote/api_erp.dart';
 import 'package:mi_app/app/domain/inputs/inputs.dart';
 import 'package:mi_app/app/domain/repositories/erp_repository.dart';
+import 'package:mi_app/app/domain/result/get_orden_compra/get_orden_compra_by_empresas_result.dart';
 import 'package:mi_app/app/domain/result/get_orden_compra/get_orden_compra_resul.dart';
 import 'package:mi_app/app/domain/result/get_orden_compra/get_orden_compra_totales_resul.dart';
 
@@ -32,5 +33,11 @@ class ErpRepositoryImpl implements ErpRepository {
         motivoRechazo: data.motivoRechazo ?? '',
         correlativo: data.correlativo ?? '0',
         estado: data.estado ?? 'PENDIENTE');
+  }
+
+  @override
+  Future<GetOrdenCompracByEmpresasResult> getOcByEmpresas(
+      OrdenCompraData data) {
+    return _api.getOCByEmpresa(estado: data.estado ?? "");
   }
 }

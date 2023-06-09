@@ -55,6 +55,7 @@ class AprobarOcView extends StatelessWidget {
                 });
                 return null;
               },
+              loadedByEmpresas: (_) => null,
             ),
           );
         },
@@ -183,6 +184,7 @@ class _ListView extends StatelessWidget {
 
             NotificationsHelper.showSnacbar(msg);
           },
+          loadedByEmpresas: (_) => null,
         );
       }
     }
@@ -589,7 +591,7 @@ class _ListView extends StatelessWidget {
                                 ListView.builder(
                                   shrinkWrap: true,
                                   physics:
-                                      NeverScrollableScrollPhysics(), // Deshabilita el desplazamiento del ListView interno
+                                      const NeverScrollableScrollPhysics(), // Deshabilita el desplazamiento del ListView interno
                                   scrollDirection: Axis.vertical,
                                   itemCount: ocDet.isNotEmpty
                                       ? ocDet.first.ordenCompraDistCcs.length

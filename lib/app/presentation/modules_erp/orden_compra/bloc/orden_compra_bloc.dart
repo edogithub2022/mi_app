@@ -1,3 +1,5 @@
+import 'package:mi_app/app/domain/models/erp/orden_compra/ocbyempresa.dart';
+import 'package:mi_app/app/domain/result/get_orden_compra/get_orden_compra_by_empresas_result.dart';
 import 'package:mi_app/app/domain/result/get_orden_compra/get_orden_compra_resul.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:io';
@@ -16,6 +18,7 @@ class OrdenCompraBloc extends ChangeNotifier {
 
   late OrdenCompraTotales selectedOrdenCompraTotales;
   late List<OrdenCompraTotales> ordenCompraTotales;
+  late List<OcByEmpresa> ordenCompraByEmpresas;
   File? newPickerFile;
 
   OrdenCompraState _state = OrdenCompraStateLoading();
@@ -23,6 +26,36 @@ class OrdenCompraBloc extends ChangeNotifier {
   OrdenCompraState get state => _state;
 
   Future<void> init({
+    required String? codempresa,
+    required String estado,
+  }) async {
+    if (state is! OrdenCompraStateLoading) {
+      _state = OrdenCompraStateLoading();
+      notifyListeners();
+    }
+
+    final result = await erpRepository.getOcByEmpresas(
+      OrdenCompraData(
+        codempresa: codempresa ?? "",
+        estado: estado,
+      ),
+    );
+
+    if (result is GetOcByEmpresasSuccess) {
+      _state = OrdenCompraStateLoadedByEmpresas(result.ocByEmpresas);
+      //Se guarda la lista de oc solo para cuando
+      //se agregue un nuevo usuario poder agregarlo a la lista
+      //y no realizar una nueva peticion http
+      ordenCompraByEmpresas = result.ocByEmpresas;
+    } else if (result is GetOcByEmpresasFailure) {
+      _state = OrdenCompraStateFailed(result.failure);
+    } else if (result is GetOcByEmpresasValidationError) {
+      _state = OrdenCompraStateError(result.validationError);
+    }
+    notifyListeners();
+  }
+
+  Future<void> getOcByEmpresa({
     required String? codempresa,
     required String estado,
   }) async {

@@ -25,6 +25,8 @@ mixin _$OrdenCompraState {
         loadeds,
     required TResult Function(OrdenCompraTotales ordenCompraTotales) loaded,
     required TResult Function(List<OrdenCompraCab> ordenCompraDet) loadedDET,
+    required TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)
+        loadedByEmpresas,
     required TResult Function(
             List<OrdenCompraCabReturning> ordenCompraCabReturning)
         loadedReturning,
@@ -38,6 +40,8 @@ mixin _$OrdenCompraState {
     TResult? Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
     TResult? Function(OrdenCompraTotales ordenCompraTotales)? loaded,
     TResult? Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult? Function(List<OcByEmpresa> ordenCompraByEmpresas)?
+        loadedByEmpresas,
     TResult? Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
         loadedReturning,
   }) =>
@@ -50,6 +54,7 @@ mixin _$OrdenCompraState {
     TResult Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
     TResult Function(OrdenCompraTotales ordenCompraTotales)? loaded,
     TResult Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)? loadedByEmpresas,
     TResult Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
         loadedReturning,
     required TResult orElse(),
@@ -63,6 +68,8 @@ mixin _$OrdenCompraState {
     required TResult Function(OrdenComprasStateLoadeds value) loadeds,
     required TResult Function(OrdenCompraStateLoaded value) loaded,
     required TResult Function(OrdenCompraStateLoadedDET value) loadedDET,
+    required TResult Function(OrdenCompraStateLoadedByEmpresas value)
+        loadedByEmpresas,
     required TResult Function(OrdenCompraStateLoadedReturning value)
         loadedReturning,
   }) =>
@@ -75,6 +82,7 @@ mixin _$OrdenCompraState {
     TResult? Function(OrdenComprasStateLoadeds value)? loadeds,
     TResult? Function(OrdenCompraStateLoaded value)? loaded,
     TResult? Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult? Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
     TResult? Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
   }) =>
       throw _privateConstructorUsedError;
@@ -86,6 +94,7 @@ mixin _$OrdenCompraState {
     TResult Function(OrdenComprasStateLoadeds value)? loadeds,
     TResult Function(OrdenCompraStateLoaded value)? loaded,
     TResult Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
     TResult Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
     required TResult orElse(),
   }) =>
@@ -156,6 +165,8 @@ class _$OrdenCompraStateLoading implements OrdenCompraStateLoading {
         loadeds,
     required TResult Function(OrdenCompraTotales ordenCompraTotales) loaded,
     required TResult Function(List<OrdenCompraCab> ordenCompraDet) loadedDET,
+    required TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)
+        loadedByEmpresas,
     required TResult Function(
             List<OrdenCompraCabReturning> ordenCompraCabReturning)
         loadedReturning,
@@ -172,6 +183,8 @@ class _$OrdenCompraStateLoading implements OrdenCompraStateLoading {
     TResult? Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
     TResult? Function(OrdenCompraTotales ordenCompraTotales)? loaded,
     TResult? Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult? Function(List<OcByEmpresa> ordenCompraByEmpresas)?
+        loadedByEmpresas,
     TResult? Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
         loadedReturning,
   }) {
@@ -187,6 +200,7 @@ class _$OrdenCompraStateLoading implements OrdenCompraStateLoading {
     TResult Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
     TResult Function(OrdenCompraTotales ordenCompraTotales)? loaded,
     TResult Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)? loadedByEmpresas,
     TResult Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
         loadedReturning,
     required TResult orElse(),
@@ -206,6 +220,8 @@ class _$OrdenCompraStateLoading implements OrdenCompraStateLoading {
     required TResult Function(OrdenComprasStateLoadeds value) loadeds,
     required TResult Function(OrdenCompraStateLoaded value) loaded,
     required TResult Function(OrdenCompraStateLoadedDET value) loadedDET,
+    required TResult Function(OrdenCompraStateLoadedByEmpresas value)
+        loadedByEmpresas,
     required TResult Function(OrdenCompraStateLoadedReturning value)
         loadedReturning,
   }) {
@@ -221,6 +237,7 @@ class _$OrdenCompraStateLoading implements OrdenCompraStateLoading {
     TResult? Function(OrdenComprasStateLoadeds value)? loadeds,
     TResult? Function(OrdenCompraStateLoaded value)? loaded,
     TResult? Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult? Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
     TResult? Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
   }) {
     return loading?.call(this);
@@ -235,6 +252,7 @@ class _$OrdenCompraStateLoading implements OrdenCompraStateLoading {
     TResult Function(OrdenComprasStateLoadeds value)? loadeds,
     TResult Function(OrdenCompraStateLoaded value)? loaded,
     TResult Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
     TResult Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
     required TResult orElse(),
   }) {
@@ -321,6 +339,8 @@ class _$OrdenCompraStateFailed implements OrdenCompraStateFailed {
         loadeds,
     required TResult Function(OrdenCompraTotales ordenCompraTotales) loaded,
     required TResult Function(List<OrdenCompraCab> ordenCompraDet) loadedDET,
+    required TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)
+        loadedByEmpresas,
     required TResult Function(
             List<OrdenCompraCabReturning> ordenCompraCabReturning)
         loadedReturning,
@@ -337,6 +357,8 @@ class _$OrdenCompraStateFailed implements OrdenCompraStateFailed {
     TResult? Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
     TResult? Function(OrdenCompraTotales ordenCompraTotales)? loaded,
     TResult? Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult? Function(List<OcByEmpresa> ordenCompraByEmpresas)?
+        loadedByEmpresas,
     TResult? Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
         loadedReturning,
   }) {
@@ -352,6 +374,7 @@ class _$OrdenCompraStateFailed implements OrdenCompraStateFailed {
     TResult Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
     TResult Function(OrdenCompraTotales ordenCompraTotales)? loaded,
     TResult Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)? loadedByEmpresas,
     TResult Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
         loadedReturning,
     required TResult orElse(),
@@ -371,6 +394,8 @@ class _$OrdenCompraStateFailed implements OrdenCompraStateFailed {
     required TResult Function(OrdenComprasStateLoadeds value) loadeds,
     required TResult Function(OrdenCompraStateLoaded value) loaded,
     required TResult Function(OrdenCompraStateLoadedDET value) loadedDET,
+    required TResult Function(OrdenCompraStateLoadedByEmpresas value)
+        loadedByEmpresas,
     required TResult Function(OrdenCompraStateLoadedReturning value)
         loadedReturning,
   }) {
@@ -386,6 +411,7 @@ class _$OrdenCompraStateFailed implements OrdenCompraStateFailed {
     TResult? Function(OrdenComprasStateLoadeds value)? loadeds,
     TResult? Function(OrdenCompraStateLoaded value)? loaded,
     TResult? Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult? Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
     TResult? Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
   }) {
     return failed?.call(this);
@@ -400,6 +426,7 @@ class _$OrdenCompraStateFailed implements OrdenCompraStateFailed {
     TResult Function(OrdenComprasStateLoadeds value)? loadeds,
     TResult Function(OrdenCompraStateLoaded value)? loaded,
     TResult Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
     TResult Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
     required TResult orElse(),
   }) {
@@ -498,6 +525,8 @@ class _$OrdenCompraStateError implements OrdenCompraStateError {
         loadeds,
     required TResult Function(OrdenCompraTotales ordenCompraTotales) loaded,
     required TResult Function(List<OrdenCompraCab> ordenCompraDet) loadedDET,
+    required TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)
+        loadedByEmpresas,
     required TResult Function(
             List<OrdenCompraCabReturning> ordenCompraCabReturning)
         loadedReturning,
@@ -514,6 +543,8 @@ class _$OrdenCompraStateError implements OrdenCompraStateError {
     TResult? Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
     TResult? Function(OrdenCompraTotales ordenCompraTotales)? loaded,
     TResult? Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult? Function(List<OcByEmpresa> ordenCompraByEmpresas)?
+        loadedByEmpresas,
     TResult? Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
         loadedReturning,
   }) {
@@ -529,6 +560,7 @@ class _$OrdenCompraStateError implements OrdenCompraStateError {
     TResult Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
     TResult Function(OrdenCompraTotales ordenCompraTotales)? loaded,
     TResult Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)? loadedByEmpresas,
     TResult Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
         loadedReturning,
     required TResult orElse(),
@@ -548,6 +580,8 @@ class _$OrdenCompraStateError implements OrdenCompraStateError {
     required TResult Function(OrdenComprasStateLoadeds value) loadeds,
     required TResult Function(OrdenCompraStateLoaded value) loaded,
     required TResult Function(OrdenCompraStateLoadedDET value) loadedDET,
+    required TResult Function(OrdenCompraStateLoadedByEmpresas value)
+        loadedByEmpresas,
     required TResult Function(OrdenCompraStateLoadedReturning value)
         loadedReturning,
   }) {
@@ -563,6 +597,7 @@ class _$OrdenCompraStateError implements OrdenCompraStateError {
     TResult? Function(OrdenComprasStateLoadeds value)? loadeds,
     TResult? Function(OrdenCompraStateLoaded value)? loaded,
     TResult? Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult? Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
     TResult? Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
   }) {
     return error?.call(this);
@@ -577,6 +612,7 @@ class _$OrdenCompraStateError implements OrdenCompraStateError {
     TResult Function(OrdenComprasStateLoadeds value)? loadeds,
     TResult Function(OrdenCompraStateLoaded value)? loaded,
     TResult Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
     TResult Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
     required TResult orElse(),
   }) {
@@ -679,6 +715,8 @@ class _$OrdenComprasStateLoadeds implements OrdenComprasStateLoadeds {
         loadeds,
     required TResult Function(OrdenCompraTotales ordenCompraTotales) loaded,
     required TResult Function(List<OrdenCompraCab> ordenCompraDet) loadedDET,
+    required TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)
+        loadedByEmpresas,
     required TResult Function(
             List<OrdenCompraCabReturning> ordenCompraCabReturning)
         loadedReturning,
@@ -695,6 +733,8 @@ class _$OrdenComprasStateLoadeds implements OrdenComprasStateLoadeds {
     TResult? Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
     TResult? Function(OrdenCompraTotales ordenCompraTotales)? loaded,
     TResult? Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult? Function(List<OcByEmpresa> ordenCompraByEmpresas)?
+        loadedByEmpresas,
     TResult? Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
         loadedReturning,
   }) {
@@ -710,6 +750,7 @@ class _$OrdenComprasStateLoadeds implements OrdenComprasStateLoadeds {
     TResult Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
     TResult Function(OrdenCompraTotales ordenCompraTotales)? loaded,
     TResult Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)? loadedByEmpresas,
     TResult Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
         loadedReturning,
     required TResult orElse(),
@@ -729,6 +770,8 @@ class _$OrdenComprasStateLoadeds implements OrdenComprasStateLoadeds {
     required TResult Function(OrdenComprasStateLoadeds value) loadeds,
     required TResult Function(OrdenCompraStateLoaded value) loaded,
     required TResult Function(OrdenCompraStateLoadedDET value) loadedDET,
+    required TResult Function(OrdenCompraStateLoadedByEmpresas value)
+        loadedByEmpresas,
     required TResult Function(OrdenCompraStateLoadedReturning value)
         loadedReturning,
   }) {
@@ -744,6 +787,7 @@ class _$OrdenComprasStateLoadeds implements OrdenComprasStateLoadeds {
     TResult? Function(OrdenComprasStateLoadeds value)? loadeds,
     TResult? Function(OrdenCompraStateLoaded value)? loaded,
     TResult? Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult? Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
     TResult? Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
   }) {
     return loadeds?.call(this);
@@ -758,6 +802,7 @@ class _$OrdenComprasStateLoadeds implements OrdenComprasStateLoadeds {
     TResult Function(OrdenComprasStateLoadeds value)? loadeds,
     TResult Function(OrdenCompraStateLoaded value)? loaded,
     TResult Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
     TResult Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
     required TResult orElse(),
   }) {
@@ -852,6 +897,8 @@ class _$OrdenCompraStateLoaded implements OrdenCompraStateLoaded {
         loadeds,
     required TResult Function(OrdenCompraTotales ordenCompraTotales) loaded,
     required TResult Function(List<OrdenCompraCab> ordenCompraDet) loadedDET,
+    required TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)
+        loadedByEmpresas,
     required TResult Function(
             List<OrdenCompraCabReturning> ordenCompraCabReturning)
         loadedReturning,
@@ -868,6 +915,8 @@ class _$OrdenCompraStateLoaded implements OrdenCompraStateLoaded {
     TResult? Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
     TResult? Function(OrdenCompraTotales ordenCompraTotales)? loaded,
     TResult? Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult? Function(List<OcByEmpresa> ordenCompraByEmpresas)?
+        loadedByEmpresas,
     TResult? Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
         loadedReturning,
   }) {
@@ -883,6 +932,7 @@ class _$OrdenCompraStateLoaded implements OrdenCompraStateLoaded {
     TResult Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
     TResult Function(OrdenCompraTotales ordenCompraTotales)? loaded,
     TResult Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)? loadedByEmpresas,
     TResult Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
         loadedReturning,
     required TResult orElse(),
@@ -902,6 +952,8 @@ class _$OrdenCompraStateLoaded implements OrdenCompraStateLoaded {
     required TResult Function(OrdenComprasStateLoadeds value) loadeds,
     required TResult Function(OrdenCompraStateLoaded value) loaded,
     required TResult Function(OrdenCompraStateLoadedDET value) loadedDET,
+    required TResult Function(OrdenCompraStateLoadedByEmpresas value)
+        loadedByEmpresas,
     required TResult Function(OrdenCompraStateLoadedReturning value)
         loadedReturning,
   }) {
@@ -917,6 +969,7 @@ class _$OrdenCompraStateLoaded implements OrdenCompraStateLoaded {
     TResult? Function(OrdenComprasStateLoadeds value)? loadeds,
     TResult? Function(OrdenCompraStateLoaded value)? loaded,
     TResult? Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult? Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
     TResult? Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
   }) {
     return loaded?.call(this);
@@ -931,6 +984,7 @@ class _$OrdenCompraStateLoaded implements OrdenCompraStateLoaded {
     TResult Function(OrdenComprasStateLoadeds value)? loadeds,
     TResult Function(OrdenCompraStateLoaded value)? loaded,
     TResult Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
     TResult Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
     required TResult orElse(),
   }) {
@@ -1032,6 +1086,8 @@ class _$OrdenCompraStateLoadedDET implements OrdenCompraStateLoadedDET {
         loadeds,
     required TResult Function(OrdenCompraTotales ordenCompraTotales) loaded,
     required TResult Function(List<OrdenCompraCab> ordenCompraDet) loadedDET,
+    required TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)
+        loadedByEmpresas,
     required TResult Function(
             List<OrdenCompraCabReturning> ordenCompraCabReturning)
         loadedReturning,
@@ -1048,6 +1104,8 @@ class _$OrdenCompraStateLoadedDET implements OrdenCompraStateLoadedDET {
     TResult? Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
     TResult? Function(OrdenCompraTotales ordenCompraTotales)? loaded,
     TResult? Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult? Function(List<OcByEmpresa> ordenCompraByEmpresas)?
+        loadedByEmpresas,
     TResult? Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
         loadedReturning,
   }) {
@@ -1063,6 +1121,7 @@ class _$OrdenCompraStateLoadedDET implements OrdenCompraStateLoadedDET {
     TResult Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
     TResult Function(OrdenCompraTotales ordenCompraTotales)? loaded,
     TResult Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)? loadedByEmpresas,
     TResult Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
         loadedReturning,
     required TResult orElse(),
@@ -1082,6 +1141,8 @@ class _$OrdenCompraStateLoadedDET implements OrdenCompraStateLoadedDET {
     required TResult Function(OrdenComprasStateLoadeds value) loadeds,
     required TResult Function(OrdenCompraStateLoaded value) loaded,
     required TResult Function(OrdenCompraStateLoadedDET value) loadedDET,
+    required TResult Function(OrdenCompraStateLoadedByEmpresas value)
+        loadedByEmpresas,
     required TResult Function(OrdenCompraStateLoadedReturning value)
         loadedReturning,
   }) {
@@ -1097,6 +1158,7 @@ class _$OrdenCompraStateLoadedDET implements OrdenCompraStateLoadedDET {
     TResult? Function(OrdenComprasStateLoadeds value)? loadeds,
     TResult? Function(OrdenCompraStateLoaded value)? loaded,
     TResult? Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult? Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
     TResult? Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
   }) {
     return loadedDET?.call(this);
@@ -1111,6 +1173,7 @@ class _$OrdenCompraStateLoadedDET implements OrdenCompraStateLoadedDET {
     TResult Function(OrdenComprasStateLoadeds value)? loadeds,
     TResult Function(OrdenCompraStateLoaded value)? loaded,
     TResult Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
     TResult Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
     required TResult orElse(),
   }) {
@@ -1128,6 +1191,203 @@ abstract class OrdenCompraStateLoadedDET implements OrdenCompraState {
   List<OrdenCompraCab> get ordenCompraDet;
   @JsonKey(ignore: true)
   _$$OrdenCompraStateLoadedDETCopyWith<_$OrdenCompraStateLoadedDET>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OrdenCompraStateLoadedByEmpresasCopyWith<$Res> {
+  factory _$$OrdenCompraStateLoadedByEmpresasCopyWith(
+          _$OrdenCompraStateLoadedByEmpresas value,
+          $Res Function(_$OrdenCompraStateLoadedByEmpresas) then) =
+      __$$OrdenCompraStateLoadedByEmpresasCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<OcByEmpresa> ordenCompraByEmpresas});
+}
+
+/// @nodoc
+class __$$OrdenCompraStateLoadedByEmpresasCopyWithImpl<$Res>
+    extends _$OrdenCompraStateCopyWithImpl<$Res,
+        _$OrdenCompraStateLoadedByEmpresas>
+    implements _$$OrdenCompraStateLoadedByEmpresasCopyWith<$Res> {
+  __$$OrdenCompraStateLoadedByEmpresasCopyWithImpl(
+      _$OrdenCompraStateLoadedByEmpresas _value,
+      $Res Function(_$OrdenCompraStateLoadedByEmpresas) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ordenCompraByEmpresas = null,
+  }) {
+    return _then(_$OrdenCompraStateLoadedByEmpresas(
+      null == ordenCompraByEmpresas
+          ? _value._ordenCompraByEmpresas
+          : ordenCompraByEmpresas // ignore: cast_nullable_to_non_nullable
+              as List<OcByEmpresa>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OrdenCompraStateLoadedByEmpresas
+    implements OrdenCompraStateLoadedByEmpresas {
+  _$OrdenCompraStateLoadedByEmpresas(
+      final List<OcByEmpresa> ordenCompraByEmpresas)
+      : _ordenCompraByEmpresas = ordenCompraByEmpresas;
+
+  final List<OcByEmpresa> _ordenCompraByEmpresas;
+  @override
+  List<OcByEmpresa> get ordenCompraByEmpresas {
+    if (_ordenCompraByEmpresas is EqualUnmodifiableListView)
+      return _ordenCompraByEmpresas;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_ordenCompraByEmpresas);
+  }
+
+  @override
+  String toString() {
+    return 'OrdenCompraState.loadedByEmpresas(ordenCompraByEmpresas: $ordenCompraByEmpresas)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OrdenCompraStateLoadedByEmpresas &&
+            const DeepCollectionEquality()
+                .equals(other._ordenCompraByEmpresas, _ordenCompraByEmpresas));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_ordenCompraByEmpresas));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OrdenCompraStateLoadedByEmpresasCopyWith<
+          _$OrdenCompraStateLoadedByEmpresas>
+      get copyWith => __$$OrdenCompraStateLoadedByEmpresasCopyWithImpl<
+          _$OrdenCompraStateLoadedByEmpresas>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(HttpRequestFailure failure) failed,
+    required TResult Function(List<String> errors) error,
+    required TResult Function(List<OrdenCompraTotales> ordenCompraTotales)
+        loadeds,
+    required TResult Function(OrdenCompraTotales ordenCompraTotales) loaded,
+    required TResult Function(List<OrdenCompraCab> ordenCompraDet) loadedDET,
+    required TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)
+        loadedByEmpresas,
+    required TResult Function(
+            List<OrdenCompraCabReturning> ordenCompraCabReturning)
+        loadedReturning,
+  }) {
+    return loadedByEmpresas(ordenCompraByEmpresas);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(HttpRequestFailure failure)? failed,
+    TResult? Function(List<String> errors)? error,
+    TResult? Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
+    TResult? Function(OrdenCompraTotales ordenCompraTotales)? loaded,
+    TResult? Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult? Function(List<OcByEmpresa> ordenCompraByEmpresas)?
+        loadedByEmpresas,
+    TResult? Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
+        loadedReturning,
+  }) {
+    return loadedByEmpresas?.call(ordenCompraByEmpresas);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(HttpRequestFailure failure)? failed,
+    TResult Function(List<String> errors)? error,
+    TResult Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
+    TResult Function(OrdenCompraTotales ordenCompraTotales)? loaded,
+    TResult Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)? loadedByEmpresas,
+    TResult Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
+        loadedReturning,
+    required TResult orElse(),
+  }) {
+    if (loadedByEmpresas != null) {
+      return loadedByEmpresas(ordenCompraByEmpresas);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OrdenCompraStateLoading value) loading,
+    required TResult Function(OrdenCompraStateFailed value) failed,
+    required TResult Function(OrdenCompraStateError value) error,
+    required TResult Function(OrdenComprasStateLoadeds value) loadeds,
+    required TResult Function(OrdenCompraStateLoaded value) loaded,
+    required TResult Function(OrdenCompraStateLoadedDET value) loadedDET,
+    required TResult Function(OrdenCompraStateLoadedByEmpresas value)
+        loadedByEmpresas,
+    required TResult Function(OrdenCompraStateLoadedReturning value)
+        loadedReturning,
+  }) {
+    return loadedByEmpresas(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OrdenCompraStateLoading value)? loading,
+    TResult? Function(OrdenCompraStateFailed value)? failed,
+    TResult? Function(OrdenCompraStateError value)? error,
+    TResult? Function(OrdenComprasStateLoadeds value)? loadeds,
+    TResult? Function(OrdenCompraStateLoaded value)? loaded,
+    TResult? Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult? Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
+    TResult? Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
+  }) {
+    return loadedByEmpresas?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OrdenCompraStateLoading value)? loading,
+    TResult Function(OrdenCompraStateFailed value)? failed,
+    TResult Function(OrdenCompraStateError value)? error,
+    TResult Function(OrdenComprasStateLoadeds value)? loadeds,
+    TResult Function(OrdenCompraStateLoaded value)? loaded,
+    TResult Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
+    TResult Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
+    required TResult orElse(),
+  }) {
+    if (loadedByEmpresas != null) {
+      return loadedByEmpresas(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OrdenCompraStateLoadedByEmpresas implements OrdenCompraState {
+  factory OrdenCompraStateLoadedByEmpresas(
+          final List<OcByEmpresa> ordenCompraByEmpresas) =
+      _$OrdenCompraStateLoadedByEmpresas;
+
+  List<OcByEmpresa> get ordenCompraByEmpresas;
+  @JsonKey(ignore: true)
+  _$$OrdenCompraStateLoadedByEmpresasCopyWith<
+          _$OrdenCompraStateLoadedByEmpresas>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1217,6 +1477,8 @@ class _$OrdenCompraStateLoadedReturning
         loadeds,
     required TResult Function(OrdenCompraTotales ordenCompraTotales) loaded,
     required TResult Function(List<OrdenCompraCab> ordenCompraDet) loadedDET,
+    required TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)
+        loadedByEmpresas,
     required TResult Function(
             List<OrdenCompraCabReturning> ordenCompraCabReturning)
         loadedReturning,
@@ -1233,6 +1495,8 @@ class _$OrdenCompraStateLoadedReturning
     TResult? Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
     TResult? Function(OrdenCompraTotales ordenCompraTotales)? loaded,
     TResult? Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult? Function(List<OcByEmpresa> ordenCompraByEmpresas)?
+        loadedByEmpresas,
     TResult? Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
         loadedReturning,
   }) {
@@ -1248,6 +1512,7 @@ class _$OrdenCompraStateLoadedReturning
     TResult Function(List<OrdenCompraTotales> ordenCompraTotales)? loadeds,
     TResult Function(OrdenCompraTotales ordenCompraTotales)? loaded,
     TResult Function(List<OrdenCompraCab> ordenCompraDet)? loadedDET,
+    TResult Function(List<OcByEmpresa> ordenCompraByEmpresas)? loadedByEmpresas,
     TResult Function(List<OrdenCompraCabReturning> ordenCompraCabReturning)?
         loadedReturning,
     required TResult orElse(),
@@ -1267,6 +1532,8 @@ class _$OrdenCompraStateLoadedReturning
     required TResult Function(OrdenComprasStateLoadeds value) loadeds,
     required TResult Function(OrdenCompraStateLoaded value) loaded,
     required TResult Function(OrdenCompraStateLoadedDET value) loadedDET,
+    required TResult Function(OrdenCompraStateLoadedByEmpresas value)
+        loadedByEmpresas,
     required TResult Function(OrdenCompraStateLoadedReturning value)
         loadedReturning,
   }) {
@@ -1282,6 +1549,7 @@ class _$OrdenCompraStateLoadedReturning
     TResult? Function(OrdenComprasStateLoadeds value)? loadeds,
     TResult? Function(OrdenCompraStateLoaded value)? loaded,
     TResult? Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult? Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
     TResult? Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
   }) {
     return loadedReturning?.call(this);
@@ -1296,6 +1564,7 @@ class _$OrdenCompraStateLoadedReturning
     TResult Function(OrdenComprasStateLoadeds value)? loadeds,
     TResult Function(OrdenCompraStateLoaded value)? loaded,
     TResult Function(OrdenCompraStateLoadedDET value)? loadedDET,
+    TResult Function(OrdenCompraStateLoadedByEmpresas value)? loadedByEmpresas,
     TResult Function(OrdenCompraStateLoadedReturning value)? loadedReturning,
     required TResult orElse(),
   }) {

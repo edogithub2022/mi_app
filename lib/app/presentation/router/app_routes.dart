@@ -1,7 +1,7 @@
-import 'package:mi_app/app/presentation/modules_erp/orden_compra/view/aprobar_oc_list_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:mi_app/app/presentation/helpers/menu_option.dart';
+import 'package:mi_app/app/presentation/modules_erp/orden_compra/view/aprobar_oc_by_empresas_list_view.dart';
 import 'package:mi_app/app/presentation/modules_home/home/view/home_view.dart';
 import 'package:mi_app/app/presentation/modules_home/login/view/login_view.dart';
 import 'package:mi_app/app/presentation/modules_home/reset_password/view/reset_password_view.dart';
@@ -39,7 +39,7 @@ class AppRoutes {
     MenuOpion(
         route: 'aprobarOc',
         name: 'Aprobar OC',
-        screen: const AprobarOcListView(),
+        screen: const AprobarOcByEmpresasView(),
         icon: Icons.check_box_outlined),
     MenuOpion(
         route: 'setting',
