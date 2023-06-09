@@ -234,12 +234,17 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Flexible(
-                              child: Text(
-                                'Obs: ${ordenCompraTotal.observaciones}',
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w300,
-                                  fontStyle: FontStyle.italic,
-                                  fontSize: 12,
+                              child: SizedBox(
+                                height: 50,
+                                child: SingleChildScrollView(
+                                  child: Text(
+                                    'Obs: ${ordenCompraTotal.observaciones}',
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w300,
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 12,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
