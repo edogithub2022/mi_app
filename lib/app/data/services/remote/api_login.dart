@@ -279,6 +279,7 @@ class LoginApi {
     required String password,
     required String rol,
     required String imageUrl,
+    required String holding,
   }) async {
     try {
       final Map<String, String> authData = {
@@ -288,6 +289,7 @@ class LoginApi {
         'password': password,
         'rol': rol,
         'imageUrl': imageUrl,
+        'holding': holding,
       };
 
       final token = await readToken();

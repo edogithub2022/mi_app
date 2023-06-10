@@ -34,6 +34,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       password: data.password,
       rol: data.rol,
       imageUrl: data.urlImage,
+      holding: data.holding,
     );
   }
 }

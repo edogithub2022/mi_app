@@ -471,7 +471,7 @@ class _SingUpUser extends StatelessWidget {
   Widget build(BuildContext context) {
     final singUpForm = Provider.of<SingUpBloc>(context);
     final SingUpBloc bloc = context.watch();
-
+    final List listHolding = ['Agrosoft', 'Margozzini'];
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -610,6 +610,42 @@ class _SingUpUser extends StatelessWidget {
                     return null;
                   },
                 ),
+
+                //H O L D I N G
+                const SizedBox(height: 10),
+                DropdownButtonFormField(
+                  dropdownColor: Preferences.isDarkmode ? Colors.white : null,
+                  decoration: const InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                  ),
+                  hint: Text(
+                    "Seleccione un Holding",
+                    style: Preferences.isDarkmode
+                        ? const TextStyle(color: Colors.black)
+                        : null,
+                  ),
+                  items: listHolding.map((name) {
+                    return DropdownMenuItem(
+                      value: name,
+                      child: Text(
+                        name,
+                        style: TextStyle(
+                            color:
+                                Preferences.isDarkmode ? Colors.black : null),
+                      ),
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    singUpForm.formValues['holding'] = value.toString();
+                  },
+                  validator: (value) {
+                    if (!value.toString().isNotNull) {
+                      return 'Seleccione un Holding';
+                    }
+                    return null;
+                  },
+                ),
                 const SizedBox(height: 10),
                 MaterialButton(
                   shape: RoundedRectangleBorder(
@@ -641,7 +677,7 @@ class _SingUpUser extends StatelessWidget {
                               singUpForm.formValues['password'].toString(),
                               singUpForm.formValues['rol'].toString(),
                               imageUrl,
-                              null);
+                              singUpForm.formValues['holding'].toString());
 
                           // if (!mounted) {
                           //   return;

@@ -132,7 +132,7 @@ class _ListView extends StatelessWidget {
         }
 
         await bloc.updateEstadoOc(
-          codempresa: '1',
+          codempresa: selectedOrdenCompraTotales.codempresa.toString(),
           correlativo: selectedOrdenCompraTotales.correlativo.toString(),
           motivoRechazo: selectedOrdenCompraTotales.motivoRechazo.toString(),
           estado: selectedOrdenCompraTotales.estadoRecepcion,
@@ -571,7 +571,7 @@ class _ListView extends StatelessWidget {
               IconButton(
                 icon: Icon(
                   Icons.article_outlined,
-                  size: 30,
+                  size: 40,
                   color:
                       Preferences.isDarkmode ? Colors.white70 : Colors.black45,
                 ),
