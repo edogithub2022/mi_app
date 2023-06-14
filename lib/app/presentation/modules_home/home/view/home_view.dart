@@ -26,7 +26,7 @@ class HomeView extends StatelessWidget {
     final tabs = [
       Center(child: _Home()),
       const Center(child: Text('Notificaciones')),
-      const Center(child: Text('Solicitelo al area comercial')),
+      const Center(child: Text('Solicítelo al área Comercial')),
     ];
 
     //Recupera datos del usuario de provider y
