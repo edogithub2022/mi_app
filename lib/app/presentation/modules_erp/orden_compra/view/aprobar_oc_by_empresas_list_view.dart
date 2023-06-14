@@ -31,7 +31,7 @@ class AprobarOcByEmpresasView extends StatelessWidget {
             return Scaffold(
               appBar: AppBar(
                 centerTitle: true,
-                title: const Text("Aprobacion OC"),
+                title: const Text("Aprobación OC"),
               ),
               drawer: SideMenu(
                 urlLogo: usuario!.urlLogo ??

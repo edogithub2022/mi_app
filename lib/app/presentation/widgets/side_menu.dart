@@ -33,7 +33,7 @@ class SideMenu extends StatelessWidget {
               Icons.logout_outlined,
               color: Apptheme.primary,
             ),
-            title: const Text('Cerrar Sesion'),
+            title: const Text('Cerrar Sesión'),
             onTap: () {
               logout();
               Navigator.pushReplacementNamed(context, 'login');

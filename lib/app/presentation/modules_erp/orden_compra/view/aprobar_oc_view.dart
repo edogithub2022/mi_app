@@ -252,7 +252,7 @@ class _ListView extends StatelessWidget {
         const SizedBox(height: 10),
         Container(
           decoration: BoxDecoration(
-            color: Colors.black12,
+            color: const Color.fromRGBO(250, 253, 191, 1.0),
             border: Border.all(
               color: Colors.black45, // Color del borde
               width: 0.5, // Ancho del borde
@@ -265,7 +265,7 @@ class _ListView extends StatelessWidget {
               Column(
                 children: [
                   const Text(
-                    'Solitado por',
+                    'Solicitado por',
                     style: TextStyle(fontWeight: FontWeight.w300),
                   ),
                   Text(
@@ -373,7 +373,7 @@ class _ListView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text("Articulo:"),
+                      const Text("Artículo:"),
                       Flexible(
                         child: Text(
                           '${ocDet.first.ordenCompraDets[i].codArticulo} - ${ocDet.first.ordenCompraDets[i].nomArticulo}',
@@ -416,7 +416,7 @@ class _ListView extends StatelessWidget {
         const SizedBox(height: 15),
         Container(
           decoration: BoxDecoration(
-            color: Colors.black12,
+            color: const Color(0xffd1e299),
             border: Border.all(
               color: Colors.black45,
               width: 0.5,
@@ -564,7 +564,7 @@ class _ListView extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.red,
+                  color: Colors.black,
                 ),
               ),
               // Ver distribución de Centros de costos
@@ -572,8 +572,9 @@ class _ListView extends StatelessWidget {
                 icon: Icon(
                   Icons.article_outlined,
                   size: 40,
-                  color:
-                      Preferences.isDarkmode ? Colors.white70 : Colors.black45,
+                  color: Preferences.isDarkmode
+                      ? Colors.white70
+                      : const Color.fromARGB(255, 151, 189, 25),
                 ),
                 onPressed: () {
                   showDialog(

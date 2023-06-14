@@ -120,7 +120,10 @@ class _Total extends StatelessWidget {
           child: Text(
             number.format(total),
             style: const TextStyle(
-                color: Colors.red, fontSize: 15, fontWeight: FontWeight.w400),
+              color: Colors.black,
+              fontSize: 15,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
       ),
@@ -154,7 +157,11 @@ class _Oc extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Text(
             'OC : $oc',
-            style: const TextStyle(color: Colors.red, fontSize: 15),
+            style: const TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w500,
+              fontSize: 15,
+            ),
           ),
         ),
       ),

@@ -54,7 +54,7 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                     icon: const Icon(Icons.arrow_back_ios_new,
                         size: 20, color: Colors.white70),
                   ),
-                  const Text("Aprobacion OC"),
+                  const Text("Aprobación OC"),
                 ],
               ),
             ),
@@ -149,7 +149,7 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.black12,
+                            color: const Color.fromRGBO(250, 253, 191, 1.0),
                             border: Border.all(
                               color: Colors.black45, // Color del borde
                               width: 0.5, // Ancho del borde
@@ -166,7 +166,7 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                               Column(
                                 children: [
                                   const Text(
-                                    'Solitado por',
+                                    'Solicitado por',
                                     style:
                                         TextStyle(fontWeight: FontWeight.w300),
                                   ),
