@@ -19,7 +19,7 @@ class OrdenCompraDet {
   int codigoTipoCompra;
   String codArticulo;
   String nomArticulo;
-  int cantidad;
+  double cantidad;
   double precioUnitario;
   int codimpuesto;
   double valorImpuesto;
