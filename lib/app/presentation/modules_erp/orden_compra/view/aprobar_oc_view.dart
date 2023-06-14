@@ -252,7 +252,9 @@ class _ListView extends StatelessWidget {
         const SizedBox(height: 10),
         Container(
           decoration: BoxDecoration(
-            color: const Color.fromRGBO(250, 253, 191, 1.0),
+            color: Preferences.isDarkmode
+                ? Colors.black54
+                : const Color.fromRGBO(250, 253, 191, 1.0),
             border: Border.all(
               color: Colors.black45, // Color del borde
               width: 0.5, // Ancho del borde
@@ -416,7 +418,9 @@ class _ListView extends StatelessWidget {
         const SizedBox(height: 15),
         Container(
           decoration: BoxDecoration(
-            color: const Color(0xffd1e299),
+            color: Preferences.isDarkmode
+                ? Colors.black54
+                : const Color(0xffd1e299),
             border: Border.all(
               color: Colors.black45,
               width: 0.5,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mi_app/app/domain/global_provider/session_provider.dart';
+import 'package:mi_app/app/presentation/helpers/preferences.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
@@ -149,7 +150,9 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            color: const Color.fromRGBO(250, 253, 191, 1.0),
+                            color: Preferences.isDarkmode
+                                ? Colors.black54
+                                : const Color.fromRGBO(250, 253, 191, 1.0),
                             border: Border.all(
                               color: Colors.black45, // Color del borde
                               width: 0.5, // Ancho del borde
@@ -167,8 +170,9 @@ class _AprobarOcListViewState extends State<AprobarOcListView> {
                                 children: [
                                   const Text(
                                     'Solicitado por',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.w300),
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w300,
+                                    ),
                                   ),
                                   Text(
                                     ordenCompraTotal.soliCodsolicitador,
