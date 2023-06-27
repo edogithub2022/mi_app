@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mi_app/app/domain/models/models.dart';
 import 'package:provider/provider.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 import 'package:mi_app/app/domain/global_provider/session_provider.dart';
-import 'package:mi_app/app/domain/models/login/usuario.dart';
 import 'package:mi_app/app/presentation/helpers/notifications_helper.dart';
 import 'package:mi_app/app/presentation/helpers/preferences.dart';
 import 'package:mi_app/app/presentation/helpers/regext_string.dart';
@@ -17,9 +17,11 @@ import 'package:mi_app/app/presentation/widgets/widgets.dart';
 
 class UserView extends StatelessWidget {
   final Usuario? usuario;
+  final List<Holding> holdings;
   const UserView({
     Key? key,
     this.usuario,
+    required this.holdings,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -28,10 +30,13 @@ class UserView extends StatelessWidget {
 
     return Scaffold(
       body: ChangeNotifierProvider(
-        create: (_) => UserBloc(userRepository: context.read()),
+        create: (_) => UserBloc(
+          userRepository: context.read(),
+        ),
         child: _ListView(
           usuario: usuario ?? user!,
           desde: usuario == null ? "perfil" : "",
+          holdings: holdings,
         ),
       ),
     );
@@ -41,8 +46,13 @@ class UserView extends StatelessWidget {
 class _ListView extends StatelessWidget {
   final Usuario usuario;
   final String desde;
+  final List<Holding> holdings;
 
-  const _ListView({required this.usuario, required this.desde});
+  const _ListView({
+    required this.usuario,
+    required this.desde,
+    required this.holdings,
+  });
   @override
   Widget build(BuildContext context) {
     final UserBloc bloc = context.watch();
@@ -113,6 +123,7 @@ class _ListView extends StatelessWidget {
                       nombre: bloc.selectedUser.nombre,
                       rut: bloc.selectedUser.rut,
                       correo: bloc.selectedUser.correo,
+                      password: bloc.selectedUser.password,
                       rol: bloc.selectedUser.rol,
                       estado: bloc.selectedUser.estado,
                       imageUrl: bloc.selectedUser.imageUrl,
@@ -124,22 +135,24 @@ class _ListView extends StatelessWidget {
 
                     final state = bloc.state;
                     state.when(
-                        loading: () => '',
-                        failed: (failure) =>
-                            NotificationsHelper.showSnacbar(failure.name),
-                        error: (errors) {
-                          final String msg = errors
-                              .toString()
-                              .replaceAll("body[", "\n")
-                              .replaceAll("[", "")
-                              .replaceAll("]", "");
-                          displayDialogIOS(context, msg);
-                        },
-                        loaded: (user) {
-                          usuario.imageUrl = bloc.selectedUser.imageUrl;
-                          NotificationsHelper.showSnacbar(
-                              "Imagen actualizada!!!");
-                        });
+                      loading: () => '',
+                      failed: (failure) =>
+                          NotificationsHelper.showSnacbar(failure.name),
+                      error: (errors) {
+                        final String msg = errors
+                            .toString()
+                            .replaceAll("body[", "\n")
+                            .replaceAll("[", "")
+                            .replaceAll("]", "");
+                        displayDialogIOS(context, msg);
+                      },
+                      loaded: (user) {
+                        usuario.imageUrl = bloc.selectedUser.imageUrl;
+                        NotificationsHelper.showSnacbar(
+                            "Imagen actualizada!!!");
+                      },
+                      loadedByHoldings: (_) => null,
+                    );
                   },
                   icon: Icon(
                     Icons.camera_alt_outlined,
@@ -165,7 +178,10 @@ class _ListView extends StatelessWidget {
                   create: (_) => SingUpBloc(
                     authenticationRepository: context.read(),
                   ),
-                  child: _SingUpUser(bloc.newPickerFile?.path),
+                  child: _SingUpUser(
+                    bloc.newPickerFile?.path,
+                    holdings,
+                  ),
                 ),
         ],
       ),
@@ -333,6 +349,9 @@ class _ModificaUser extends StatelessWidget {
           case TipoInput.dropdownButtonFormField:
             selectedUser.rol = value;
             break;
+          case TipoInput.password:
+            selectedUser.password = value;
+            break;
           default: // Without this, you see a WARNING.
         }
 
@@ -341,6 +360,7 @@ class _ModificaUser extends StatelessWidget {
           nombre: selectedUser.nombre,
           rut: selectedUser.rut,
           correo: selectedUser.correo,
+          password: selectedUser.password,
           rol: selectedUser.rol,
           estado: selectedUser.estado,
           imageUrl: selectedUser.imageUrl,
@@ -352,44 +372,49 @@ class _ModificaUser extends StatelessWidget {
 
         final state = bloc.state;
         state.when(
-          loading: () => '',
-          failed: (failure) => NotificationsHelper.showSnacbar(failure.name),
-          error: (errors) {
-            final String msg = errors
-                .toString()
-                .replaceAll("body[", "\n")
-                .replaceAll("[", "")
-                .replaceAll("]", "");
-            displayDialogIOS(context, msg);
-          },
-          loaded: (user) {
-            String newValue = value ?? '';
-            String msg = ' :  $newValue';
-            switch (tipoInput) {
-              case TipoInput.nombre:
-                msg = 'Nombre actualizado -> ${usuario.nombre} $msg';
-                usuario.nombre = newValue;
-                break;
-              case TipoInput.rut:
-                msg = 'Rut actualizado -> ${usuario.rut} $msg';
-                usuario.rut = newValue;
-                break;
-              case TipoInput.estado:
-                msg =
-                    'Estado actualizado -> ${usuario.estado ? 'activo' : 'inactivo'} $msg';
-                usuario.estado = selectedUser.estado;
-                break;
-              case TipoInput.dropdownButtonFormField:
-                msg = 'Rol actualizado -> ${usuario.rol} $msg';
-                usuario.rol = selectedUser.rol;
-                break;
-              default:
-                msg = "Sin actualizaciones"; // Without this, you see a WARNING.
-            }
+            loading: () => '',
+            failed: (failure) => NotificationsHelper.showSnacbar(failure.name),
+            error: (errors) {
+              final String msg = errors
+                  .toString()
+                  .replaceAll("body[", "\n")
+                  .replaceAll("[", "")
+                  .replaceAll("]", "");
+              displayDialogIOS(context, msg);
+            },
+            loaded: (user) {
+              String newValue = value ?? '';
+              String msg = ' :  $newValue';
+              switch (tipoInput) {
+                case TipoInput.nombre:
+                  msg = 'Nombre actualizado -> ${usuario.nombre} $msg';
+                  usuario.nombre = newValue;
+                  break;
+                case TipoInput.rut:
+                  msg = 'Rut actualizado -> ${usuario.rut} $msg';
+                  usuario.rut = newValue;
+                  break;
+                case TipoInput.estado:
+                  msg =
+                      'Estado actualizado -> ${usuario.estado ? 'activo' : 'inactivo'} $msg';
+                  usuario.estado = selectedUser.estado;
+                  break;
+                case TipoInput.dropdownButtonFormField:
+                  msg = 'Rol actualizado -> ${usuario.rol} $msg';
+                  usuario.rol = selectedUser.rol;
+                  break;
+                case TipoInput.password:
+                  msg = 'Password Actualizada';
+                  usuario.rol = selectedUser.rol;
+                  break;
+                default:
+                  msg =
+                      "Sin actualizaciones"; // Without this, you see a WARNING.
+              }
 
-            NotificationsHelper.showSnacbar(msg);
-          },
-        );
+              NotificationsHelper.showSnacbar(msg);
+            },
+            loadedByHoldings: (_) => null);
       }
     }
 
@@ -458,6 +483,16 @@ class _ModificaUser extends StatelessWidget {
                   title: "Seleccione Estado")
               : null,
         ),
+        _LabelButton(
+          label: 'Password',
+          value: "******",
+          onPressed: () => updateDisplayInput(
+            context,
+            msgErr: 'Password no coinciden',
+            tipoInput: TipoInput.password,
+            title: "Ingrese nueva password:",
+          ),
+        ),
       ],
     );
   }
@@ -465,13 +500,17 @@ class _ModificaUser extends StatelessWidget {
 
 class _SingUpUser extends StatelessWidget {
   final String? filePath;
-  const _SingUpUser(this.filePath);
+  final List<Holding> holdings;
+  const _SingUpUser(
+    this.filePath,
+    this.holdings,
+  );
 
   @override
   Widget build(BuildContext context) {
     final singUpForm = Provider.of<SingUpBloc>(context);
     final SingUpBloc bloc = context.watch();
-    final List listHolding = ['Agrosoft', 'Margozzini'];
+    // final List listHolding = ['Agrosoft', 'Margozzini'];
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -625,11 +664,11 @@ class _SingUpUser extends StatelessWidget {
                         ? const TextStyle(color: Colors.black)
                         : null,
                   ),
-                  items: listHolding.map((name) {
+                  items: holdings.map((list) {
                     return DropdownMenuItem(
-                      value: name,
+                      value: list.holding,
                       child: Text(
-                        name,
+                        list.holding,
                         style: TextStyle(
                             color:
                                 Preferences.isDarkmode ? Colors.black : null),

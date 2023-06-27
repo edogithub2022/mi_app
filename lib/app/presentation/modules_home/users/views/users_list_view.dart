@@ -10,13 +10,19 @@ import 'package:mi_app/app/presentation/theme/app_theme.dart';
 import 'package:mi_app/app/presentation/widgets/widgets.dart';
 
 class UsersListView extends StatefulWidget {
-  const UsersListView({Key? key}) : super(key: key);
+  final String holding;
+  const UsersListView({
+    Key? key,
+    required this.holding,
+  }) : super(key: key);
 
   @override
   State<UsersListView> createState() => _UsersListViewState();
 }
 
 class _UsersListViewState extends State<UsersListView> {
+  late String holding = widget.holding;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +30,7 @@ class _UsersListViewState extends State<UsersListView> {
       child: ChangeNotifierProvider(
         create: (_) => UserBloc(
           userRepository: context.read(),
-        )..init(),
+        )..usuariosList(holding),
         builder: (context, _) {
           final UserBloc bloc = context.watch();
           SessionProvider sessionProvider = context.watch();
@@ -52,6 +58,7 @@ class _UsersListViewState extends State<UsersListView> {
                 return Center(child: Text(msg));
               },
               loaded: (usuarios) => _listview(usuarios),
+              loadedByHoldings: (_) => null,
             ),
 
             //Boton crear nuevo usuario
@@ -62,12 +69,14 @@ class _UsersListViewState extends State<UsersListView> {
                 //realizar una peticion http
                 //Se recupera la lista y si no es null se actualiza
                 List<Usuario> usuarios = bloc.usuarios;
+                List<Holding> holdings = bloc.holdings;
 
                 Usuario user = Usuario(
                   uuid: '',
                   rut: '',
                   nombre: '',
                   correo: '',
+                  password: '',
                   rol: '',
                   estado: true,
                   createdAt: DateTime.now(),
@@ -77,7 +86,10 @@ class _UsersListViewState extends State<UsersListView> {
                 final result = await Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => UserView(usuario: user)));
+                        builder: (context) => UserView(
+                              usuario: user,
+                              holdings: holdings,
+                            )));
 
                 //Si no es null se agrega el nuevo usuario a la lista
                 if (result != null) {
@@ -106,7 +118,10 @@ class _UsersListViewState extends State<UsersListView> {
               await Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => UserView(usuario: user)));
+                      builder: (context) => UserView(
+                            usuario: user,
+                            holdings: const [],
+                          )));
               setState(() {});
             },
             child: CardListView(

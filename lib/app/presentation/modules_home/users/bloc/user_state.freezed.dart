@@ -22,6 +22,8 @@ mixin _$UserState {
     required TResult Function(HttpRequestFailure failure) failed,
     required TResult Function(List<String> errors) error,
     required TResult Function(List<Usuario> usuarios) loaded,
+    required TResult Function(List<UsuarioByHolding> usuariosByHolding)
+        loadedByHoldings,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +32,8 @@ mixin _$UserState {
     TResult? Function(HttpRequestFailure failure)? failed,
     TResult? Function(List<String> errors)? error,
     TResult? Function(List<Usuario> usuarios)? loaded,
+    TResult? Function(List<UsuarioByHolding> usuariosByHolding)?
+        loadedByHoldings,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +42,8 @@ mixin _$UserState {
     TResult Function(HttpRequestFailure failure)? failed,
     TResult Function(List<String> errors)? error,
     TResult Function(List<Usuario> usuarios)? loaded,
+    TResult Function(List<UsuarioByHolding> usuariosByHolding)?
+        loadedByHoldings,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +53,7 @@ mixin _$UserState {
     required TResult Function(UserStateFailed value) failed,
     required TResult Function(UserStateError value) error,
     required TResult Function(UserStateLoaded value) loaded,
+    required TResult Function(UserStateLoadedHolding value) loadedByHoldings,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +62,7 @@ mixin _$UserState {
     TResult? Function(UserStateFailed value)? failed,
     TResult? Function(UserStateError value)? error,
     TResult? Function(UserStateLoaded value)? loaded,
+    TResult? Function(UserStateLoadedHolding value)? loadedByHoldings,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +71,7 @@ mixin _$UserState {
     TResult Function(UserStateFailed value)? failed,
     TResult Function(UserStateError value)? error,
     TResult Function(UserStateLoaded value)? loaded,
+    TResult Function(UserStateLoadedHolding value)? loadedByHoldings,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +136,8 @@ class _$UserStateLoading implements UserStateLoading {
     required TResult Function(HttpRequestFailure failure) failed,
     required TResult Function(List<String> errors) error,
     required TResult Function(List<Usuario> usuarios) loaded,
+    required TResult Function(List<UsuarioByHolding> usuariosByHolding)
+        loadedByHoldings,
   }) {
     return loading();
   }
@@ -138,6 +149,8 @@ class _$UserStateLoading implements UserStateLoading {
     TResult? Function(HttpRequestFailure failure)? failed,
     TResult? Function(List<String> errors)? error,
     TResult? Function(List<Usuario> usuarios)? loaded,
+    TResult? Function(List<UsuarioByHolding> usuariosByHolding)?
+        loadedByHoldings,
   }) {
     return loading?.call();
   }
@@ -149,6 +162,8 @@ class _$UserStateLoading implements UserStateLoading {
     TResult Function(HttpRequestFailure failure)? failed,
     TResult Function(List<String> errors)? error,
     TResult Function(List<Usuario> usuarios)? loaded,
+    TResult Function(List<UsuarioByHolding> usuariosByHolding)?
+        loadedByHoldings,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -164,6 +179,7 @@ class _$UserStateLoading implements UserStateLoading {
     required TResult Function(UserStateFailed value) failed,
     required TResult Function(UserStateError value) error,
     required TResult Function(UserStateLoaded value) loaded,
+    required TResult Function(UserStateLoadedHolding value) loadedByHoldings,
   }) {
     return loading(this);
   }
@@ -175,6 +191,7 @@ class _$UserStateLoading implements UserStateLoading {
     TResult? Function(UserStateFailed value)? failed,
     TResult? Function(UserStateError value)? error,
     TResult? Function(UserStateLoaded value)? loaded,
+    TResult? Function(UserStateLoadedHolding value)? loadedByHoldings,
   }) {
     return loading?.call(this);
   }
@@ -186,6 +203,7 @@ class _$UserStateLoading implements UserStateLoading {
     TResult Function(UserStateFailed value)? failed,
     TResult Function(UserStateError value)? error,
     TResult Function(UserStateLoaded value)? loaded,
+    TResult Function(UserStateLoadedHolding value)? loadedByHoldings,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -267,6 +285,8 @@ class _$UserStateFailed implements UserStateFailed {
     required TResult Function(HttpRequestFailure failure) failed,
     required TResult Function(List<String> errors) error,
     required TResult Function(List<Usuario> usuarios) loaded,
+    required TResult Function(List<UsuarioByHolding> usuariosByHolding)
+        loadedByHoldings,
   }) {
     return failed(failure);
   }
@@ -278,6 +298,8 @@ class _$UserStateFailed implements UserStateFailed {
     TResult? Function(HttpRequestFailure failure)? failed,
     TResult? Function(List<String> errors)? error,
     TResult? Function(List<Usuario> usuarios)? loaded,
+    TResult? Function(List<UsuarioByHolding> usuariosByHolding)?
+        loadedByHoldings,
   }) {
     return failed?.call(failure);
   }
@@ -289,6 +311,8 @@ class _$UserStateFailed implements UserStateFailed {
     TResult Function(HttpRequestFailure failure)? failed,
     TResult Function(List<String> errors)? error,
     TResult Function(List<Usuario> usuarios)? loaded,
+    TResult Function(List<UsuarioByHolding> usuariosByHolding)?
+        loadedByHoldings,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -304,6 +328,7 @@ class _$UserStateFailed implements UserStateFailed {
     required TResult Function(UserStateFailed value) failed,
     required TResult Function(UserStateError value) error,
     required TResult Function(UserStateLoaded value) loaded,
+    required TResult Function(UserStateLoadedHolding value) loadedByHoldings,
   }) {
     return failed(this);
   }
@@ -315,6 +340,7 @@ class _$UserStateFailed implements UserStateFailed {
     TResult? Function(UserStateFailed value)? failed,
     TResult? Function(UserStateError value)? error,
     TResult? Function(UserStateLoaded value)? loaded,
+    TResult? Function(UserStateLoadedHolding value)? loadedByHoldings,
   }) {
     return failed?.call(this);
   }
@@ -326,6 +352,7 @@ class _$UserStateFailed implements UserStateFailed {
     TResult Function(UserStateFailed value)? failed,
     TResult Function(UserStateError value)? error,
     TResult Function(UserStateLoaded value)? loaded,
+    TResult Function(UserStateLoadedHolding value)? loadedByHoldings,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -418,6 +445,8 @@ class _$UserStateError implements UserStateError {
     required TResult Function(HttpRequestFailure failure) failed,
     required TResult Function(List<String> errors) error,
     required TResult Function(List<Usuario> usuarios) loaded,
+    required TResult Function(List<UsuarioByHolding> usuariosByHolding)
+        loadedByHoldings,
   }) {
     return error(errors);
   }
@@ -429,6 +458,8 @@ class _$UserStateError implements UserStateError {
     TResult? Function(HttpRequestFailure failure)? failed,
     TResult? Function(List<String> errors)? error,
     TResult? Function(List<Usuario> usuarios)? loaded,
+    TResult? Function(List<UsuarioByHolding> usuariosByHolding)?
+        loadedByHoldings,
   }) {
     return error?.call(errors);
   }
@@ -440,6 +471,8 @@ class _$UserStateError implements UserStateError {
     TResult Function(HttpRequestFailure failure)? failed,
     TResult Function(List<String> errors)? error,
     TResult Function(List<Usuario> usuarios)? loaded,
+    TResult Function(List<UsuarioByHolding> usuariosByHolding)?
+        loadedByHoldings,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -455,6 +488,7 @@ class _$UserStateError implements UserStateError {
     required TResult Function(UserStateFailed value) failed,
     required TResult Function(UserStateError value) error,
     required TResult Function(UserStateLoaded value) loaded,
+    required TResult Function(UserStateLoadedHolding value) loadedByHoldings,
   }) {
     return error(this);
   }
@@ -466,6 +500,7 @@ class _$UserStateError implements UserStateError {
     TResult? Function(UserStateFailed value)? failed,
     TResult? Function(UserStateError value)? error,
     TResult? Function(UserStateLoaded value)? loaded,
+    TResult? Function(UserStateLoadedHolding value)? loadedByHoldings,
   }) {
     return error?.call(this);
   }
@@ -477,6 +512,7 @@ class _$UserStateError implements UserStateError {
     TResult Function(UserStateFailed value)? failed,
     TResult Function(UserStateError value)? error,
     TResult Function(UserStateLoaded value)? loaded,
+    TResult Function(UserStateLoadedHolding value)? loadedByHoldings,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -569,6 +605,8 @@ class _$UserStateLoaded implements UserStateLoaded {
     required TResult Function(HttpRequestFailure failure) failed,
     required TResult Function(List<String> errors) error,
     required TResult Function(List<Usuario> usuarios) loaded,
+    required TResult Function(List<UsuarioByHolding> usuariosByHolding)
+        loadedByHoldings,
   }) {
     return loaded(usuarios);
   }
@@ -580,6 +618,8 @@ class _$UserStateLoaded implements UserStateLoaded {
     TResult? Function(HttpRequestFailure failure)? failed,
     TResult? Function(List<String> errors)? error,
     TResult? Function(List<Usuario> usuarios)? loaded,
+    TResult? Function(List<UsuarioByHolding> usuariosByHolding)?
+        loadedByHoldings,
   }) {
     return loaded?.call(usuarios);
   }
@@ -591,6 +631,8 @@ class _$UserStateLoaded implements UserStateLoaded {
     TResult Function(HttpRequestFailure failure)? failed,
     TResult Function(List<String> errors)? error,
     TResult Function(List<Usuario> usuarios)? loaded,
+    TResult Function(List<UsuarioByHolding> usuariosByHolding)?
+        loadedByHoldings,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -606,6 +648,7 @@ class _$UserStateLoaded implements UserStateLoaded {
     required TResult Function(UserStateFailed value) failed,
     required TResult Function(UserStateError value) error,
     required TResult Function(UserStateLoaded value) loaded,
+    required TResult Function(UserStateLoadedHolding value) loadedByHoldings,
   }) {
     return loaded(this);
   }
@@ -617,6 +660,7 @@ class _$UserStateLoaded implements UserStateLoaded {
     TResult? Function(UserStateFailed value)? failed,
     TResult? Function(UserStateError value)? error,
     TResult? Function(UserStateLoaded value)? loaded,
+    TResult? Function(UserStateLoadedHolding value)? loadedByHoldings,
   }) {
     return loaded?.call(this);
   }
@@ -628,6 +672,7 @@ class _$UserStateLoaded implements UserStateLoaded {
     TResult Function(UserStateFailed value)? failed,
     TResult Function(UserStateError value)? error,
     TResult Function(UserStateLoaded value)? loaded,
+    TResult Function(UserStateLoadedHolding value)? loadedByHoldings,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -643,5 +688,171 @@ abstract class UserStateLoaded implements UserState {
   List<Usuario> get usuarios;
   @JsonKey(ignore: true)
   _$$UserStateLoadedCopyWith<_$UserStateLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UserStateLoadedHoldingCopyWith<$Res> {
+  factory _$$UserStateLoadedHoldingCopyWith(_$UserStateLoadedHolding value,
+          $Res Function(_$UserStateLoadedHolding) then) =
+      __$$UserStateLoadedHoldingCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<UsuarioByHolding> usuariosByHolding});
+}
+
+/// @nodoc
+class __$$UserStateLoadedHoldingCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$UserStateLoadedHolding>
+    implements _$$UserStateLoadedHoldingCopyWith<$Res> {
+  __$$UserStateLoadedHoldingCopyWithImpl(_$UserStateLoadedHolding _value,
+      $Res Function(_$UserStateLoadedHolding) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? usuariosByHolding = null,
+  }) {
+    return _then(_$UserStateLoadedHolding(
+      null == usuariosByHolding
+          ? _value._usuariosByHolding
+          : usuariosByHolding // ignore: cast_nullable_to_non_nullable
+              as List<UsuarioByHolding>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UserStateLoadedHolding implements UserStateLoadedHolding {
+  _$UserStateLoadedHolding(final List<UsuarioByHolding> usuariosByHolding)
+      : _usuariosByHolding = usuariosByHolding;
+
+  final List<UsuarioByHolding> _usuariosByHolding;
+  @override
+  List<UsuarioByHolding> get usuariosByHolding {
+    if (_usuariosByHolding is EqualUnmodifiableListView)
+      return _usuariosByHolding;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_usuariosByHolding);
+  }
+
+  @override
+  String toString() {
+    return 'UserState.loadedByHoldings(usuariosByHolding: $usuariosByHolding)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserStateLoadedHolding &&
+            const DeepCollectionEquality()
+                .equals(other._usuariosByHolding, _usuariosByHolding));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_usuariosByHolding));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserStateLoadedHoldingCopyWith<_$UserStateLoadedHolding> get copyWith =>
+      __$$UserStateLoadedHoldingCopyWithImpl<_$UserStateLoadedHolding>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(HttpRequestFailure failure) failed,
+    required TResult Function(List<String> errors) error,
+    required TResult Function(List<Usuario> usuarios) loaded,
+    required TResult Function(List<UsuarioByHolding> usuariosByHolding)
+        loadedByHoldings,
+  }) {
+    return loadedByHoldings(usuariosByHolding);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(HttpRequestFailure failure)? failed,
+    TResult? Function(List<String> errors)? error,
+    TResult? Function(List<Usuario> usuarios)? loaded,
+    TResult? Function(List<UsuarioByHolding> usuariosByHolding)?
+        loadedByHoldings,
+  }) {
+    return loadedByHoldings?.call(usuariosByHolding);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(HttpRequestFailure failure)? failed,
+    TResult Function(List<String> errors)? error,
+    TResult Function(List<Usuario> usuarios)? loaded,
+    TResult Function(List<UsuarioByHolding> usuariosByHolding)?
+        loadedByHoldings,
+    required TResult orElse(),
+  }) {
+    if (loadedByHoldings != null) {
+      return loadedByHoldings(usuariosByHolding);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UserStateLoading value) loading,
+    required TResult Function(UserStateFailed value) failed,
+    required TResult Function(UserStateError value) error,
+    required TResult Function(UserStateLoaded value) loaded,
+    required TResult Function(UserStateLoadedHolding value) loadedByHoldings,
+  }) {
+    return loadedByHoldings(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UserStateLoading value)? loading,
+    TResult? Function(UserStateFailed value)? failed,
+    TResult? Function(UserStateError value)? error,
+    TResult? Function(UserStateLoaded value)? loaded,
+    TResult? Function(UserStateLoadedHolding value)? loadedByHoldings,
+  }) {
+    return loadedByHoldings?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UserStateLoading value)? loading,
+    TResult Function(UserStateFailed value)? failed,
+    TResult Function(UserStateError value)? error,
+    TResult Function(UserStateLoaded value)? loaded,
+    TResult Function(UserStateLoadedHolding value)? loadedByHoldings,
+    required TResult orElse(),
+  }) {
+    if (loadedByHoldings != null) {
+      return loadedByHoldings(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserStateLoadedHolding implements UserState {
+  factory UserStateLoadedHolding(
+          final List<UsuarioByHolding> usuariosByHolding) =
+      _$UserStateLoadedHolding;
+
+  List<UsuarioByHolding> get usuariosByHolding;
+  @JsonKey(ignore: true)
+  _$$UserStateLoadedHoldingCopyWith<_$UserStateLoadedHolding> get copyWith =>
       throw _privateConstructorUsedError;
 }

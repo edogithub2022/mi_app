@@ -1,6 +1,7 @@
 import 'package:mi_app/app/data/services/remote/api_login.dart';
 import 'package:mi_app/app/domain/inputs/inputs.dart';
 import 'package:mi_app/app/domain/repositories/user_repository.dart';
+import 'package:mi_app/app/domain/result/get_maestros/get_holding_result.dart';
 import 'package:mi_app/app/domain/result/get_usuarios/get_usuarios_resul.dart';
 
 class UserRepositoryImpl implements UserRepository {
@@ -25,9 +26,20 @@ class UserRepositoryImpl implements UserRepository {
       nombre: data.nombre,
       rut: data.rut,
       correo: data.correo,
+      password: data.password,
       rol: data.rol,
       estado: data.estado,
       imageUrl: data.imageUrl,
     );
+  }
+
+  @override
+  Future<GetHoldingResult> getHoldings() {
+    return _api.getHoldings();
+  }
+
+  @override
+  Future<GetUsuariosResult> getUsuariosByHolding() {
+    return _api.getUsuariosByHolding();
   }
 }

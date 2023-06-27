@@ -1,8 +1,11 @@
 import 'dart:io';
 import 'dart:async';
 
+import 'package:mi_app/app/domain/models/login/usuario_by_holding.dart';
+import 'package:mi_app/app/domain/models/login/usuarios_by_holding_response.dart';
 import 'package:mi_app/app/domain/models/models.dart';
 import 'package:mi_app/app/domain/models/login/usuarios_response.dart';
+import 'package:mi_app/app/domain/result/get_maestros/get_holding_result.dart';
 import 'package:mi_app/app/domain/result/get_usuarios/get_usuarios_resul.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:mi_app/app/domain/failures/http_request_failure.dart';
@@ -29,7 +32,7 @@ class LoginApi {
       };
 
       final resul = await _http.request(
-        '/api/v1/auth/veriytoken',
+        '/api/v1/auth/verifytoken',
         method: HttpMethod.get,
         headers: authHeaders,
       );
@@ -82,7 +85,7 @@ class LoginApi {
     }
   }
 
-//Recuperar Usuarios: usando la clase http
+  //Recuperar Usuarios: usando la clase http
   Future<GetUsuariosResult> getUsuarios() async {
     try {
       final token = await readToken();
@@ -110,6 +113,75 @@ class LoginApi {
         usuariosResponse = UsuariosResponse.fromJson(resul.data);
         usuarios = usuariosResponse.data!;
         return GetUsuariosSuccess(usuarios);
+        // throw HttpRequestFailure.accessDenied;
+      }
+
+      //Aca ya sabemos que result.error no es nulo, lo que quiere decir que,
+      //la solicitud termino pero la api devolvio un codigo de error
+      //indicandonos que hemos pasado credenciales incorrectas
+      if (resul.statusCode >= 400 && resul.statusCode < 500) {
+        //Borrar token del storage
+        logout();
+        throw HttpRequestFailure.accessDenied;
+      }
+
+      if (resul.statusCode >= 500) {
+        throw HttpRequestFailure.serverError;
+      }
+
+      if (resul.statusCode == -1) {
+        throw HttpRequestFailure.networkError;
+      }
+
+      throw HttpRequestFailure.unknownError;
+    } catch (e) {
+      late HttpRequestFailure failure;
+
+      if (e is HttpRequestFailure) {
+        failure = e;
+      } else if (e is SocketException || e is TimeoutException) {
+        //La peticion no termino de forma exitosa debido tal vez que a un problema
+        //de conexion a internet o la peticion tardo demasiado en responder
+        failure = HttpRequestFailure.networkError;
+      } else {
+        //Sino retorna un error desconocido que por ejemplo puede ser que
+        //estemos parseando mal el dato
+        failure = HttpRequestFailure.unknownError;
+      }
+
+      return GetUsuariosFailure(failure);
+    }
+  }
+
+  //Recuperar Usuarios: usando la clase http
+  Future<GetUsuariosResult> getUsuariosByHolding() async {
+    try {
+      final token = await readToken();
+      if (token == '') throw HttpRequestFailure.notoken;
+
+      List<UsuarioByHolding> usuarios = [];
+
+      Map<String, String> authHeaders = {
+        'Content-type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': token
+      };
+
+      final resul = await _http.request(
+        '/api/v1/usuarios/userbyholding',
+        method: HttpMethod.get,
+        headers: authHeaders,
+      );
+
+      final UsuariosByHoldingResponse usuariosByHoldingResponse;
+
+      //si no hay errores la peticion termino de forma exitosa
+      if (resul.error == null) {
+        //Token Valido
+        usuariosByHoldingResponse =
+            UsuariosByHoldingResponse.fromJson(resul.data);
+        usuarios = usuariosByHoldingResponse.data;
+        return GetUsuariosByHoldingSuccess(usuarios);
         // throw HttpRequestFailure.accessDenied;
       }
 
@@ -358,6 +430,7 @@ class LoginApi {
     required String nombre,
     required String rut,
     required String correo,
+    required String password,
     required String rol,
     required bool estado,
     required String imageUrl,
@@ -367,7 +440,7 @@ class LoginApi {
         'nombre': nombre,
         'rut': rut,
         // 'correo': correo,
-        // 'password': password,
+        'password': password,
         'rol': rol,
         'estado': estado,
         'imageUrl': imageUrl,
@@ -433,6 +506,74 @@ class LoginApi {
       }
 
       return GetUsuariosFailure(failure);
+    }
+  }
+
+  //Recuperar Holding: usando la clase http
+  Future<GetHoldingResult> getHoldings() async {
+    try {
+      final token = await readToken();
+      if (token == '') throw HttpRequestFailure.notoken;
+
+      List<Holding> holdings = [];
+
+      Map<String, String> authHeaders = {
+        'Content-type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': token
+      };
+
+      final resul = await _http.request(
+        '/api/v1/holdings',
+        method: HttpMethod.get,
+        headers: authHeaders,
+      );
+
+      final HoldingsResponse holdingsResponse;
+
+      //si no hay errores la peticion termino de forma exitosa
+      if (resul.error == null) {
+        //Token Valido
+        holdingsResponse = HoldingsResponse.fromJson(resul.data);
+        holdings = holdingsResponse.data;
+        return GetHoldingsSuccess(holdings);
+        // throw HttpRequestFailure.accessDenied;
+      }
+
+      //Aca ya sabemos que result.error no es nulo, lo que quiere decir que,
+      //la solicitud termino pero la api devolvio un codigo de error
+      //indicandonos que hemos pasado credenciales incorrectas
+      if (resul.statusCode >= 400 && resul.statusCode < 500) {
+        //Borrar token del storage
+        logout();
+        throw HttpRequestFailure.accessDenied;
+      }
+
+      if (resul.statusCode >= 500) {
+        throw HttpRequestFailure.serverError;
+      }
+
+      if (resul.statusCode == -1) {
+        throw HttpRequestFailure.networkError;
+      }
+
+      throw HttpRequestFailure.unknownError;
+    } catch (e) {
+      late HttpRequestFailure failure;
+
+      if (e is HttpRequestFailure) {
+        failure = e;
+      } else if (e is SocketException || e is TimeoutException) {
+        //La peticion no termino de forma exitosa debido tal vez que a un problema
+        //de conexion a internet o la peticion tardo demasiado en responder
+        failure = HttpRequestFailure.networkError;
+      } else {
+        //Sino retorna un error desconocido que por ejemplo puede ser que
+        //estemos parseando mal el dato
+        failure = HttpRequestFailure.unknownError;
+      }
+
+      return GetHoldingFailure(failure);
     }
   }
 

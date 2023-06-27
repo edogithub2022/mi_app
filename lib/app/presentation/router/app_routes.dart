@@ -5,11 +5,11 @@ import 'package:mi_app/app/presentation/modules_erp/orden_compra/view/aprobar_oc
 import 'package:mi_app/app/presentation/modules_home/home/view/home_view.dart';
 import 'package:mi_app/app/presentation/modules_home/login/view/login_view.dart';
 import 'package:mi_app/app/presentation/modules_home/reset_password/view/reset_password_view.dart';
-import 'package:mi_app/app/presentation/modules_home/settings/views/settings_view.dart';
+import 'package:mi_app/app/presentation/modules_home/home/view/settings_view.dart';
 import 'package:mi_app/app/presentation/modules_home/singup/view/singup_view.dart';
 import 'package:mi_app/app/presentation/modules_home/splash/view/splash_view.dart';
+import 'package:mi_app/app/presentation/modules_home/users/views/user_by_holding_list_view.dart';
 import 'package:mi_app/app/presentation/modules_home/users/views/user_view.dart';
-import 'package:mi_app/app/presentation/modules_home/users/views/users_list_view.dart';
 
 class AppRoutes {
   static const initialRoute = 'splash';
@@ -24,7 +24,9 @@ class AppRoutes {
     MenuOpion(
         route: 'perfil',
         name: 'Perfil de Usuario',
-        screen: const UserView(),
+        screen: const UserView(
+          holdings: [],
+        ),
         icon: Icons.person),
     MenuOpion(
         route: 'singup',
@@ -34,7 +36,7 @@ class AppRoutes {
     MenuOpion(
         route: 'users',
         name: 'Usuarios',
-        screen: const UsersListView(),
+        screen: const UserByHoldingView(),
         icon: Icons.switch_account_outlined),
     MenuOpion(
         route: 'aprobarOc',

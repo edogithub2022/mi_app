@@ -6,6 +6,7 @@ class Usuario {
     required this.rut,
     required this.nombre,
     required this.correo,
+    required this.password,
     required this.rol,
     required this.estado,
     required this.createdAt,
@@ -19,6 +20,7 @@ class Usuario {
   String rut;
   String nombre;
   String correo;
+  String password;
   String rol;
   bool estado;
   DateTime createdAt;
@@ -36,6 +38,7 @@ class Usuario {
         rut: json["rut"],
         nombre: json["nombre"],
         correo: json["correo"],
+        password: json["password"],
         rol: json["rol"],
         estado: json["estado"],
         createdAt: DateTime.parse(json["createdAt"]),
@@ -50,6 +53,7 @@ class Usuario {
         "rut": rut,
         "nombre": nombre,
         "correo": correo,
+        "password": password,
         "rol": rol,
         "estado": estado,
         "createdAt": createdAt.toIso8601String(),
@@ -64,6 +68,7 @@ class Usuario {
         rut: rut,
         nombre: nombre,
         correo: correo,
+        password: password,
         rol: rol,
         estado: estado,
         createdAt: createdAt,

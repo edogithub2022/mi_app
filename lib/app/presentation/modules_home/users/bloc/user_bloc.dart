@@ -6,15 +6,15 @@ import 'dart:convert';
 import 'package:mi_app/app/domain/inputs/inputs.dart';
 import 'package:mi_app/app/domain/models/models.dart';
 import 'package:mi_app/app/domain/repositories/user_repository.dart';
+import 'package:mi_app/app/domain/result/get_maestros/get_holding_result.dart';
 import 'package:mi_app/app/domain/result/get_usuarios/get_usuarios_resul.dart';
 import 'package:mi_app/app/presentation/modules_home/users/bloc/bloc.dart';
 
 class UserBloc extends ChangeNotifier {
   final UserRepository userRepository;
-  UserBloc({
-    required this.userRepository,
-  });
+  UserBloc({required this.userRepository});
 
+  late List<Holding> holdings;
   late Usuario selectedUser;
   late List<Usuario> usuarios;
   File? newPickerFile;
@@ -34,10 +34,34 @@ class UserBloc extends ChangeNotifier {
       notifyListeners();
     }
 
+    final result = await userRepository.getUsuariosByHolding();
+
+    if (result is GetUsuariosByHoldingSuccess) {
+      _state = UserStateLoadedHolding(result.usuarios);
+    } else if (result is GetUsuariosFailure) {
+      _state = UserStateFailed(result.failure);
+    } else if (result is GetUsuariosValidationError) {
+      _state = UserStateError(result.validationError);
+    }
+    notifyListeners();
+  }
+
+  Future<void> usuariosList(String holding) async {
+    if (state is! UserStateLoading) {
+      _state = UserStateLoading();
+      notifyListeners();
+    }
+
     final result = await userRepository.getUsuarios();
 
     if (result is GetUsuariosSuccess) {
       _state = UserStateLoaded(result.usuarios);
+
+      //Se guarda en una lista de holding
+      final resultHolding = await userRepository.getHoldings();
+      if (resultHolding is GetHoldingsSuccess) {
+        holdings = resultHolding.holdings;
+      }
       //Se guarda la lista de usuarios solo para cuando
       //se agregue un nuevo usuario poderlo agregar a la lista
       //y no realizar una nueva peticion http
@@ -55,6 +79,7 @@ class UserBloc extends ChangeNotifier {
     required String nombre,
     required String rut,
     required String correo,
+    required String password,
     required String rol,
     required bool estado,
     required String? imageUrl,
@@ -70,6 +95,7 @@ class UserBloc extends ChangeNotifier {
       nombre: nombre,
       rut: rut,
       correo: correo,
+      password: password,
       rol: rol,
       estado: estado,
       imageUrl: imageUrl ?? '',
