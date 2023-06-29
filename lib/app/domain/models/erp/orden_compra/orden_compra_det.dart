@@ -32,7 +32,7 @@ class OrdenCompraDet {
         codigoTipoCompra: json["CODIGO_TIPO_COMPRA"],
         codArticulo: json["COD_ARTICULO"],
         nomArticulo: json["NOM_ARTICULO"],
-        cantidad: json["CANTIDAD"],
+        cantidad: json["CANTIDAD"]?.toDouble(),
         precioUnitario: json["PRECIO_UNITARIO"]?.toDouble(),
         codimpuesto: json["CODIMPUESTO"],
         valorImpuesto: json["VALOR_IMPUESTO"]?.toDouble(),
