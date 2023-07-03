@@ -86,12 +86,18 @@ class LoginApi {
   }
 
   //Recuperar Usuarios: usando la clase http
-  Future<GetUsuariosResult> getUsuarios() async {
+  Future<GetUsuariosResult> getUsuarios({
+    required String holding,
+  }) async {
     try {
       final token = await readToken();
       if (token == '') throw HttpRequestFailure.notoken;
 
       List<Usuario> usuarios = [];
+
+      Map<String, String> query = {
+        'holding': holding,
+      };
 
       Map<String, String> authHeaders = {
         'Content-type': 'application/json',
@@ -103,6 +109,7 @@ class LoginApi {
         '/api/v1/usuarios',
         method: HttpMethod.get,
         headers: authHeaders,
+        queryParameters: query,
       );
 
       final UsuariosResponse usuariosResponse;

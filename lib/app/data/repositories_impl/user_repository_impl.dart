@@ -15,8 +15,8 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<GetUsuariosResult> getUsuarios() {
-    return _api.getUsuarios();
+  Future<GetUsuariosResult> getUsuarios(String holding) {
+    return _api.getUsuarios(holding: holding);
   }
 
   @override

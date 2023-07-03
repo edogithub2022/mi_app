@@ -52,7 +52,7 @@ class UserBloc extends ChangeNotifier {
       notifyListeners();
     }
 
-    final result = await userRepository.getUsuarios();
+    final result = await userRepository.getUsuarios(holding);
 
     if (result is GetUsuariosSuccess) {
       _state = UserStateLoaded(result.usuarios);

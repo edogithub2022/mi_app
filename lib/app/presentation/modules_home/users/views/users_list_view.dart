@@ -38,7 +38,20 @@ class _UsersListViewState extends State<UsersListView> {
           return Scaffold(
             appBar: AppBar(
               centerTitle: true,
-              title: const Text("Usuarios"),
+              title: Row(
+                children: [
+                  // Flecha para ir a la página anterior
+                  IconButton(
+                    onPressed: () {
+                      // Navigator.of(context).pop();
+                      Navigator.pushReplacementNamed(context, 'users');
+                    },
+                    icon: const Icon(Icons.arrow_back_ios_new,
+                        size: 20, color: Colors.white70),
+                  ),
+                  const Text("Usuarios"),
+                ],
+              ),
             ),
             drawer: SideMenu(
               urlLogo: usuario!.urlLogo ??

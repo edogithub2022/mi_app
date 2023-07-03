@@ -6,6 +6,6 @@ abstract class UserRepository {
   Future<GetUsuariosResult> getUsuariosByHolding();
   Future<GetHoldingResult> getHoldings();
   Future<GetUsuariosResult> getReadVeriyToken();
-  Future<GetUsuariosResult> getUsuarios();
+  Future<GetUsuariosResult> getUsuarios(String holding);
   Future<GetUsuariosResult> putUsuario(UpdateUserData data);
 }
